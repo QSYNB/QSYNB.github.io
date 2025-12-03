@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>Aydacity</title>
+    <link href="/2025/12/03/Audiacity/"/>
+    <url>/2025/12/03/Audiacity/</url>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。</p><p>省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。</p><p>目前实现方式是本地whisper&#x2F;whisperX模型来跑。</p><p>目前方案和问题：<br>方案1：用whisper跑逐字&#x2F;词对应（方便字&#x2F;词级别的修改）（因为我和播客搭子会有精修的需求）<br>    问题：lable数量太大太卡了。<br>方案2：whisper跑逐句的对应<br>    优点：解决了卡顿问题，两个轨2h音频可以正常使用不影响剪辑<br>    问题：whisper的时间对应不精准，在一长段文本中会有时间偏移。（在一段空白之后的文本会修正，然后反复）<br>方案3：whisperX跑逐句的对应<br>    问题：whisperX不知道为什么转不出标点符号，导致无法按照期望的来断句。导致也无法（没心情）看时间对应是否符合预期。<br>其他问题：<br>    1.Audacity的内置插件无法调用cmd执行命令，只能手动在cmd里面运行。导致过程也不够自动化。<br>    2.whisper模型会忽略音频中的 嗯，啊，语气词，不符合剪辑需求。（剪映做的就很好，<del>应该</del>肯定是自己训的模型了，真好啊）<br>未来方向：<br>    1.tmd这些音频剪辑软件我受够了（主要是大部分软件都没有文字轨），能不能自己写一个简单的只有剪辑功能的？<br>    2.模型能更符合播客剪辑需求就好了<br>    3.使用以下英文的那个软件（叫descript还是啥）看看参考以下</p><h1 id="瞎忙活忙活了啥"><a href="#瞎忙活忙活了啥" class="headerlink" title="瞎忙活忙活了啥"></a>瞎忙活忙活了啥</h1><ul><li>本地部署whisper&#x2F;whisperX模型 （whisperX的部署过程被AI狂骗）</li><li>写一个python脚本，调用whisper&#x2F;whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）</li><li>因为还想用llm来识别播客文本，来判断哪些需要删除哪些逻辑可以保留，所以还尝试了租gpu服务器（runpod），部署deepseek-v2-lite等，但是大失败。（主要是init module总是失败在disk full就很烦，放弃了）</li></ul><p>先写到这后续再慢慢整理（道心破碎中……</p><h2 id="test-Audacity-plug-in-function-available"><a href="#test-Audacity-plug-in-function-available" class="headerlink" title="test Audacity plug-in function available"></a>test Audacity plug-in function available</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;Hello World Test&quot;<br>;action &quot;Running Test&quot;<br><br>(format nil &quot;恭喜！Nyquist 运行成功！&quot;)<br></code></pre></td></tr></table></figure><h2 id="Nyquist-plug-in-思路"><a href="#Nyquist-plug-in-思路" class="headerlink" title="Nyquist plug-in 思路"></a>Nyquist plug-in 思路</h2><p>第一步测试：确保 Audacity 能“吐出”音频 (WAV)<br>第二步测试：确保 Nyquist 能“传话”给 Python<br>第三步测试：确保 Audacity 能“吃进” TXT 标签</p><h3 id="测试1-导出音频"><a href="#测试1-导出音频" class="headerlink" title="测试1-导出音频"></a>测试1-导出音频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试1-导出音频&quot;<br>;action &quot;正在测试导出...&quot;<br><br>(defun main ()<br>  ;; 1. 硬编码一个测试路径 (请确保这个文件夹存在！)<br>  (setq test-audio-path &quot;D:/15_MAI/audacity/temp_test.wav&quot;)<br>  <br>  ;; 2. 保存选区 (*track*) 到文件<br>  ;; s-save 是 Nyquist 保存音频的函数<br>  (s-save *track* 1000000000 test-audio-path)<br>  <br>  ;; 3. 告诉用户结果<br>  (format nil &quot;音频已导出到：~a&quot; test-audio-path)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure><h3 id="第二步测试：确保-Nyquist-能“传话”给-Python"><a href="#第二步测试：确保-Nyquist-能“传话”给-Python" class="headerlink" title="第二步测试：确保 Nyquist 能“传话”给 Python"></a>第二步测试：确保 Nyquist 能“传话”给 Python</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试2-构建命令&quot;<br>;action &quot;正在检查路径...&quot;<br><br>(defun main ()<br>  ;; 填入您的真实路径<br>  (setq py-exe &quot;D:/important/Conda_Envs/py310/python.exe&quot;)<br>  (setq py-script &quot;D:/15_MAI/audacity/whisperx_label_generator.py&quot;)<br>  (setq audio-file &quot;D:/15_MAI/audacity/temp_test.wav&quot;) ;; 假设这是第一步生成的文件<br>  <br>  ;; 构建命令 (注意这里要把反斜杠处理好)<br>  (setq cmd (format nil &quot;\&quot;~a\&quot; \&quot;~a\&quot; \&quot;~a\&quot;&quot; py-exe py-script audio-file))<br>  <br>  ;; 把它打印出来给您看！<br>  (format nil &quot;请复制下面的命令去CMD运行验证：\n\n~a&quot; cmd)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure><h3 id="测试3-是否能调用cmd执行命令"><a href="#测试3-是否能调用cmd执行命令" class="headerlink" title="测试3 是否能调用cmd执行命令"></a>测试3 是否能调用cmd执行命令</h3><h3 id="测试4-是否能导入标签"><a href="#测试4-是否能导入标签" class="headerlink" title="测试4 是否能导入标签"></a>测试4 是否能导入标签</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>花里胡哨的瞎忙活</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>软件</tag>
+      
+      <tag>播客</tag>
+      
+      <tag>whisper</tag>
+      
+      <tag>语音识别</tag>
+      
+      <tag>音频剪辑</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>TO DO LIST</title>
     <link href="/2025/12/02/TO-DO-LIST/"/>
     <url>/2025/12/02/TO-DO-LIST/</url>
