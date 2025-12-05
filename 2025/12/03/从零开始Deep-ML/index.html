@@ -19,26 +19,24 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+    <meta name="description" content="Covariance Matrix 协方差矩阵 what is Covariance Matrix mathematically?  协方差矩阵是一个方阵，每个元素表示两个随机变量之间的协方差。（协方差是两个特征的差距相乘之后平均） 协方差矩阵的第i行第j列元素表示第i个随机变量和第j个随机变量的协方差。 协方差矩阵的第i行第i列元素表示第i个随机变量的方差。（协方差矩阵是对称的） 协方差大于0表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Aydacity">
-<meta property="og:url" content="https://qsynb.github.io/2025/12/03/Audiacity/index.html">
+<meta property="og:title" content="从零开始Deep-ML">
+<meta property="og:url" content="https://qsynb.github.io/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+<meta property="og:description" content="Covariance Matrix 协方差矩阵 what is Covariance Matrix mathematically?  协方差矩阵是一个方阵，每个元素表示两个随机变量之间的协方差。（协方差是两个特征的差距相乘之后平均） 协方差矩阵的第i行第j列元素表示第i个随机变量和第j个随机变量的协方差。 协方差矩阵的第i行第i列元素表示第i个随机变量的方差。（协方差矩阵是对称的） 协方差大于0表">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-03T09:29:18.000Z">
-<meta property="article:modified_time" content="2025-12-03T10:55:19.499Z">
+<meta property="article:published_time" content="2025-12-03T11:29:33.000Z">
+<meta property="article:modified_time" content="2025-12-05T16:23:58.647Z">
 <meta property="article:author" content="秦少言">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="播客">
-<meta property="article:tag" content="语音识别">
-<meta property="article:tag" content="软件">
-<meta property="article:tag" content="音频剪辑">
+<meta property="article:tag" content="learning">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="找工作">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Aydacity - Hexo</title>
+  <title>从零开始Deep-ML - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Aydacity"></span>
+            <span id="subtitle" data-typed-text="从零开始Deep-ML"></span>
           
         </div>
 
@@ -215,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-03 17:29" pubdate>
-          2025年12月3日 下午
+        <time datetime="2025-12-03 19:29" pubdate>
+          2025年12月3日 晚上
         </time>
       </span>
     
@@ -227,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          1.5k 字
         
       </span>
     
@@ -238,7 +236,7 @@
         
         
         
-          19 分钟
+          13 分钟
         
       </span>
     
@@ -275,27 +273,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Aydacity</h1>
+            <h1 id="seo-header">从零开始Deep-ML</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。</p>
-<p>省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。</p>
-<p>目前实现方式是本地whisper&#x2F;whisperX模型来跑。</p>
-<p>目前方案和问题：<br>方案1：用whisper跑逐字&#x2F;词对应（方便字&#x2F;词级别的修改）（因为我和播客搭子会有精修的需求）<br>    问题：lable数量太大太卡了。<br>方案2：whisper跑逐句的对应<br>    优点：解决了卡顿问题，两个轨2h音频可以正常使用不影响剪辑<br>    问题：whisper的时间对应不精准，在一长段文本中会有时间偏移。（在一段空白之后的文本会修正，然后反复）<br>方案3：whisperX跑逐句的对应<br>    问题：whisperX不知道为什么转不出标点符号，导致无法按照期望的来断句。导致也无法（没心情）看时间对应是否符合预期。<br>其他问题：<br>    1.Audacity的内置插件无法调用cmd执行命令，只能手动在cmd里面运行。导致过程也不够自动化。<br>    2.whisper模型会忽略音频中的 嗯，啊，语气词，不符合剪辑需求。（剪映做的就很好，<del>应该</del>肯定是自己训的模型了，真好啊）<br>未来方向：<br>    1.tmd这些音频剪辑软件我受够了（主要是大部分软件都没有文字轨），能不能自己写一个简单的只有剪辑功能的？<br>    2.模型能更符合播客剪辑需求就好了<br>    3.使用以下英文的那个软件（叫descript还是啥）看看参考以下</p>
-<h1 id="瞎忙活忙活了啥"><a href="#瞎忙活忙活了啥" class="headerlink" title="瞎忙活忙活了啥"></a>瞎忙活忙活了啥</h1><ul>
-<li>本地部署whisper&#x2F;whisperX模型 （whisperX的部署过程被AI狂骗）</li>
-<li>写一个python脚本，调用whisper&#x2F;whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）</li>
-<li>因为还想用llm来识别播客文本，来判断哪些需要删除哪些逻辑可以保留，所以还尝试了租gpu服务器（runpod），部署deepseek-v2-lite等，但是大失败。（主要是init module总是失败在disk full就很烦，放弃了）</li>
+                <h3 id="Covariance-Matrix-协方差矩阵"><a href="#Covariance-Matrix-协方差矩阵" class="headerlink" title="Covariance Matrix 协方差矩阵"></a>Covariance Matrix 协方差矩阵</h3><ul>
+<li><p>what is Covariance Matrix mathematically?</p>
+<ul>
+<li>协方差矩阵是一个方阵，每个元素表示两个随机变量之间的协方差。（协方差是两个特征的差距相乘之后平均）</li>
+<li>协方差矩阵的第i行第j列元素表示第i个随机变量和第j个随机变量的协方差。</li>
+<li>协方差矩阵的第i行第i列元素表示第i个随机变量的方差。（协方差矩阵是对称的）</li>
+<li>协方差大于0表示两个随机变量正相关，小于0表示负相关，等于0表示不相关。</li>
 </ul>
-<p>先写到这后续再慢慢整理（道心破碎中……</p>
-<h2 id="test-Audacity-plug-in-function-available"><a href="#test-Audacity-plug-in-function-available" class="headerlink" title="test Audacity plug-in function available"></a>test Audacity plug-in function available</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;Hello World Test&quot;<br>;action &quot;Running Test&quot;<br><br>(format nil &quot;恭喜！Nyquist 运行成功！&quot;)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>pytorch求协方差的函数</p>
+<ul>
+<li>torch.cov()<ul>
+<li>输入：一个二维张量，每一行表示一个随机变量，每一列表示一个样本。</li>
+<li>输出：一个二维张量，即协方差矩阵。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Solve-Linear-Equations-using-Jacobi-Method"><a href="#Solve-Linear-Equations-using-Jacobi-Method" class="headerlink" title="Solve Linear Equations using Jacobi Method"></a>Solve Linear Equations using Jacobi Method</h3><ul>
+<li><p>What is Jacobi Method?</p>
+<ul>
+<li>雅可比方法是一种迭代方法，用于求解线性方程组Ax&#x3D;b。（求一个x，使得Ax&#x3D;b）</li>
+<li>输入：一个系数矩阵A，一个常数向量b，一个初始解向量x0，一个迭代次数N。</li>
+<li>输出：一个解向量x，即方程组的解。</li>
+</ul>
+</li>
+<li><p>pytorch实现雅可比方法（没有直接的函数，要自己实现）</p>
+<ul>
+<li>实现思路<ul>
+<li>雅可比方法的迭代公式为：$x_{new} &#x3D; D^{-1} (b - R x_{old})$</li>
+<li>其中，$D$ 是系数矩阵 $A$ 的对角矩阵，$R$ 是 $A$ 去掉对角线元素后的矩阵。</li>
+<li>每次迭代都将 $x_{new}$ 赋值给 $x_{old}$，直到收敛。</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#get the diagonal elements of tensor 获得对角线上的元素</span><br>D = torch.diag(A) <br><span class="hljs-comment"># 创建一个和A一样的矩阵，但是元素为0</span><br>D = torch.zeros_like(A)<br><span class="hljs-comment"># 填充对角线元素为 A 的对角线元素</span><br>D.fill_diagonal_(A.diag())<br><span class="hljs-comment"># 矩阵相乘</span><br>x = torch.matmul(R, x)<br><span class="hljs-comment"># 戒断小数位，保留4位</span><br>x = torch.<span class="hljs-built_in">round</span>(x * <span class="hljs-number">10000</span>) / <span class="hljs-number">10000</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_jacobi</span>(<span class="hljs-params">A, b, n</span>) -&gt; torch.Tensor:<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Solve Ax = b using the Jacobi iterative method for n iterations.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    A_t = torch.as_tensor(A, dtype=torch.<span class="hljs-built_in">float</span>) <span class="hljs-comment">#change A to tensor</span><br>    b_t = torch.as_tensor(b, dtype=torch.<span class="hljs-built_in">float</span>) <span class="hljs-comment">#change b to tensor</span><br>    <br>    <span class="hljs-comment"># 1. 初始化 x 为全零向量 (Standard initialization for Jacobi)</span><br>    x = torch.zeros_like(b_t)<br>    <br>    <span class="hljs-comment"># 2. 提取对角线元素 D</span><br>    D = torch.diag(A_t)<br>    <br>    <span class="hljs-comment"># 3. 构建剩余矩阵 R (即 A 去掉对角线元素)</span><br>    <span class="hljs-comment"># Jacobi 公式: x_new = D^-1 * (b - (A-D)x_old)</span><br>    R = A_t.clone()<br>    R.fill_diagonal_(<span class="hljs-number">0</span>)<br>    <br>    <span class="hljs-comment"># 4. 迭代 n 次</span><br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-comment"># 计算 (b - R * x)</span><br>        <span class="hljs-comment"># torch.matmul(R, x) 计算的是除了对角线外的 a_ij * x_j 的和</span><br>        numerator = b_t - torch.matmul(R, x)<br>        <br>        <span class="hljs-comment"># 除去对角线元素 D</span><br>        x_new = numerator / D<br>        <br>        <span class="hljs-comment"># 核心要求：每一步中间结果保留 4 位小数</span><br>        <span class="hljs-comment"># 使用 torch.round(x * 10000) / 10000 来截断小数位</span><br>        x = torch.<span class="hljs-built_in">round</span>(x_new * <span class="hljs-number">10000</span>) / <span class="hljs-number">10000</span><br>        <br>    <span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>
 
-<h2 id="Nyquist-plug-in-思路"><a href="#Nyquist-plug-in-思路" class="headerlink" title="Nyquist plug-in 思路"></a>Nyquist plug-in 思路</h2><p>第一步测试：确保 Audacity 能“吐出”音频 (WAV)<br>第二步测试：确保 Nyquist 能“传话”给 Python<br>第三步测试：确保 Audacity 能“吃进” TXT 标签</p>
-<h3 id="测试1-导出音频"><a href="#测试1-导出音频" class="headerlink" title="测试1-导出音频"></a>测试1-导出音频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试1-导出音频&quot;<br>;action &quot;正在测试导出...&quot;<br><br>(defun main ()<br>  ;; 1. 硬编码一个测试路径 (请确保这个文件夹存在！)<br>  (setq test-audio-path &quot;D:/15_MAI/audacity/temp_test.wav&quot;)<br>  <br>  ;; 2. 保存选区 (*track*) 到文件<br>  ;; s-save 是 Nyquist 保存音频的函数<br>  (s-save *track* 1000000000 test-audio-path)<br>  <br>  ;; 3. 告诉用户结果<br>  (format nil &quot;音频已导出到：~a&quot; test-audio-path)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="第二步测试：确保-Nyquist-能“传话”给-Python"><a href="#第二步测试：确保-Nyquist-能“传话”给-Python" class="headerlink" title="第二步测试：确保 Nyquist 能“传话”给 Python"></a>第二步测试：确保 Nyquist 能“传话”给 Python</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试2-构建命令&quot;<br>;action &quot;正在检查路径...&quot;<br><br>(defun main ()<br>  ;; 填入您的真实路径<br>  (setq py-exe &quot;D:/important/Conda_Envs/py310/python.exe&quot;)<br>  (setq py-script &quot;D:/15_MAI/audacity/whisperx_label_generator.py&quot;)<br>  (setq audio-file &quot;D:/15_MAI/audacity/temp_test.wav&quot;) ;; 假设这是第一步生成的文件<br>  <br>  ;; 构建命令 (注意这里要把反斜杠处理好)<br>  (setq cmd (format nil &quot;\&quot;~a\&quot; \&quot;~a\&quot; \&quot;~a\&quot;&quot; py-exe py-script audio-file))<br>  <br>  ;; 把它打印出来给您看！<br>  (format nil &quot;请复制下面的命令去CMD运行验证：\n\n~a&quot; cmd)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="测试3-是否能调用cmd执行命令"><a href="#测试3-是否能调用cmd执行命令" class="headerlink" title="测试3 是否能调用cmd执行命令"></a>测试3 是否能调用cmd执行命令</h3><h3 id="测试4-是否能导入标签"><a href="#测试4-是否能导入标签" class="headerlink" title="测试4 是否能导入标签"></a>测试4 是否能导入标签</h3>
                 
               </div>
             
@@ -313,7 +335,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E7%9A%84%E7%9E%8E%E5%BF%99%E6%B4%BB/" class="category-chain-item">花里胡哨的瞎忙活</a>
+  <a href="/categories/MAI/" class="category-chain-item">MAI</a>
   
   
 
@@ -328,15 +350,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BD%AF%E4%BB%B6/" class="print-no-link">#软件</a>
+        <a href="/tags/learning/" class="print-no-link">#learning</a>
       
-        <a href="/tags/%E6%92%AD%E5%AE%A2/" class="print-no-link">#播客</a>
+        <a href="/tags/%E6%89%BE%E5%B7%A5%E4%BD%9C/" class="print-no-link">#找工作</a>
       
-        <a href="/tags/whisper/" class="print-no-link">#whisper</a>
-      
-        <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/" class="print-no-link">#语音识别</a>
-      
-        <a href="/tags/%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" class="print-no-link">#音频剪辑</a>
+        <a href="/tags/note/" class="print-no-link">#note</a>
       
     </div>
   
@@ -348,8 +366,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Aydacity</div>
-      <div>https://qsynb.github.io/2025/12/03/Audiacity/</div>
+      <div>从零开始Deep-ML</div>
+      <div>https://qsynb.github.io/2025/12/03/从零开始Deep-ML/</div>
     </div>
     <div class="license-meta">
       
@@ -393,18 +411,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/" title="从零开始Deep-ML">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从零开始Deep-ML</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/02/TO-DO-LIST/" title="TO DO LIST">
-                        <span class="hidden-mobile">TO DO LIST</span>
+                      <a href="/2025/12/03/Audiacity/" title="Aydacity">
+                        <span class="hidden-mobile">Aydacity</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

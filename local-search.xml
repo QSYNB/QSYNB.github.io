@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>从零开始Deep-ML</title>
+    <link href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/"/>
+    <url>/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Covariance-Matrix-协方差矩阵"><a href="#Covariance-Matrix-协方差矩阵" class="headerlink" title="Covariance Matrix 协方差矩阵"></a>Covariance Matrix 协方差矩阵</h3><ul><li><p>what is Covariance Matrix mathematically?</p><ul><li>协方差矩阵是一个方阵，每个元素表示两个随机变量之间的协方差。（协方差是两个特征的差距相乘之后平均）</li><li>协方差矩阵的第i行第j列元素表示第i个随机变量和第j个随机变量的协方差。</li><li>协方差矩阵的第i行第i列元素表示第i个随机变量的方差。（协方差矩阵是对称的）</li><li>协方差大于0表示两个随机变量正相关，小于0表示负相关，等于0表示不相关。</li></ul></li><li><p>pytorch求协方差的函数</p><ul><li>torch.cov()<ul><li>输入：一个二维张量，每一行表示一个随机变量，每一列表示一个样本。</li><li>输出：一个二维张量，即协方差矩阵。</li></ul></li></ul></li></ul><h3 id="Solve-Linear-Equations-using-Jacobi-Method"><a href="#Solve-Linear-Equations-using-Jacobi-Method" class="headerlink" title="Solve Linear Equations using Jacobi Method"></a>Solve Linear Equations using Jacobi Method</h3><ul><li><p>What is Jacobi Method?</p><ul><li>雅可比方法是一种迭代方法，用于求解线性方程组Ax&#x3D;b。（求一个x，使得Ax&#x3D;b）</li><li>输入：一个系数矩阵A，一个常数向量b，一个初始解向量x0，一个迭代次数N。</li><li>输出：一个解向量x，即方程组的解。</li></ul></li><li><p>pytorch实现雅可比方法（没有直接的函数，要自己实现）</p><ul><li>实现思路<ul><li>雅可比方法的迭代公式为：$x_{new} &#x3D; D^{-1} (b - R x_{old})$</li><li>其中，$D$ 是系数矩阵 $A$ 的对角矩阵，$R$ 是 $A$ 去掉对角线元素后的矩阵。</li><li>每次迭代都将 $x_{new}$ 赋值给 $x_{old}$，直到收敛。</li></ul></li></ul>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#get the diagonal elements of tensor 获得对角线上的元素</span><br>D = torch.diag(A) <br><span class="hljs-comment"># 创建一个和A一样的矩阵，但是元素为0</span><br>D = torch.zeros_like(A)<br><span class="hljs-comment"># 填充对角线元素为 A 的对角线元素</span><br>D.fill_diagonal_(A.diag())<br><span class="hljs-comment"># 矩阵相乘</span><br>x = torch.matmul(R, x)<br><span class="hljs-comment"># 戒断小数位，保留4位</span><br>x = torch.<span class="hljs-built_in">round</span>(x * <span class="hljs-number">10000</span>) / <span class="hljs-number">10000</span><br></code></pre></td></tr></table></figure></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_jacobi</span>(<span class="hljs-params">A, b, n</span>) -&gt; torch.Tensor:<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    Solve Ax = b using the Jacobi iterative method for n iterations.</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    A_t = torch.as_tensor(A, dtype=torch.<span class="hljs-built_in">float</span>) <span class="hljs-comment">#change A to tensor</span><br>    b_t = torch.as_tensor(b, dtype=torch.<span class="hljs-built_in">float</span>) <span class="hljs-comment">#change b to tensor</span><br>    <br>    <span class="hljs-comment"># 1. 初始化 x 为全零向量 (Standard initialization for Jacobi)</span><br>    x = torch.zeros_like(b_t)<br>    <br>    <span class="hljs-comment"># 2. 提取对角线元素 D</span><br>    D = torch.diag(A_t)<br>    <br>    <span class="hljs-comment"># 3. 构建剩余矩阵 R (即 A 去掉对角线元素)</span><br>    <span class="hljs-comment"># Jacobi 公式: x_new = D^-1 * (b - (A-D)x_old)</span><br>    R = A_t.clone()<br>    R.fill_diagonal_(<span class="hljs-number">0</span>)<br>    <br>    <span class="hljs-comment"># 4. 迭代 n 次</span><br>    <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-comment"># 计算 (b - R * x)</span><br>        <span class="hljs-comment"># torch.matmul(R, x) 计算的是除了对角线外的 a_ij * x_j 的和</span><br>        numerator = b_t - torch.matmul(R, x)<br>        <br>        <span class="hljs-comment"># 除去对角线元素 D</span><br>        x_new = numerator / D<br>        <br>        <span class="hljs-comment"># 核心要求：每一步中间结果保留 4 位小数</span><br>        <span class="hljs-comment"># 使用 torch.round(x * 10000) / 10000 来截断小数位</span><br>        x = torch.<span class="hljs-built_in">round</span>(x_new * <span class="hljs-number">10000</span>) / <span class="hljs-number">10000</span><br>        <br>    <span class="hljs-keyword">return</span> x<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>MAI</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>learning</tag>
+      
+      <tag>找工作</tag>
+      
+      <tag>note</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Aydacity</title>
     <link href="/2025/12/03/Audiacity/"/>
     <url>/2025/12/03/Audiacity/</url>
