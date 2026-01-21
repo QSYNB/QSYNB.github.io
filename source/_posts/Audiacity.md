@@ -28,6 +28,9 @@ categories: [花里胡哨的瞎忙活]
     2.模型能更符合播客剪辑需求就好了
     3.使用以下英文的那个软件（叫descript还是啥）看看参考以下
 
+## 现状记录
+现在的hello插件时把所选区域导出到D:\audacity_file\temp
+
 # 瞎忙活忙活了啥
 - 本地部署whisper/whisperX模型 （whisperX的部署过程被AI狂骗）
 - 写一个python脚本，调用whisper/whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）
