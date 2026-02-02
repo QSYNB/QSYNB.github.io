@@ -19,26 +19,25 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+    <meta name="description" content="GAN的原理U-net原理decoder &amp; encoder structurepurpose encoder: downsample the image to a lower dimension decoder: upsample the image to a higher dimension skip connection: concatenate the feature map fr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Aydacity">
-<meta property="og:url" content="https://qsynb.github.io/2025/12/03/Audiacity/index.html">
+<meta property="og:title" content="7015 NVIDA LEARN NOTE">
+<meta property="og:url" content="https://qsynb.github.io/2025/12/09/7015-NVIDA-LEARN-NOTE/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+<meta property="og:description" content="GAN的原理U-net原理decoder &amp; encoder structurepurpose encoder: downsample the image to a lower dimension decoder: upsample the image to a higher dimension skip connection: concatenate the feature map fr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-03T09:29:18.000Z">
-<meta property="article:modified_time" content="2025-12-30T15:29:40.697Z">
+<meta property="article:published_time" content="2025-12-09T09:14:40.000Z">
+<meta property="article:modified_time" content="2025-12-15T11:35:30.511Z">
 <meta property="article:author" content="秦少言">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="播客">
-<meta property="article:tag" content="语音识别">
-<meta property="article:tag" content="软件">
-<meta property="article:tag" content="音频剪辑">
+<meta property="article:tag" content="LEARN">
+<meta property="article:tag" content="MAI">
+<meta property="article:tag" content="NOTE">
+<meta property="article:tag" content="NVIDA">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Aydacity - Hexo</title>
+  <title>7015 NVIDA LEARN NOTE - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Aydacity"></span>
+            <span id="subtitle" data-typed-text="7015 NVIDA LEARN NOTE"></span>
           
         </div>
 
@@ -215,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-03 17:29" pubdate>
-          2025年12月3日 下午
+        <time datetime="2025-12-09 17:14" pubdate>
+          2025年12月9日 下午
         </time>
       </span>
     
@@ -227,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          1.1k 字
         
       </span>
     
@@ -238,7 +237,7 @@
         
         
         
-          19 分钟
+          9 分钟
         
       </span>
     
@@ -275,28 +274,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Aydacity</h1>
+            <h1 id="seo-header">7015 NVIDA LEARN NOTE</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。</p>
-<p>省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。</p>
-<p>目前实现方式是本地whisper&#x2F;whisperX模型来跑。</p>
-<p>目前方案和问题：<br>方案1：用whisper跑逐字&#x2F;词对应（方便字&#x2F;词级别的修改）（因为我和播客搭子会有精修的需求）<br>    问题：lable数量太大太卡了。<br>方案2：whisper跑逐句的对应<br>    优点：解决了卡顿问题，两个轨2h音频可以正常使用不影响剪辑<br>    问题：whisper的时间对应不精准，在一长段文本中会有时间偏移。（在一段空白之后的文本会修正，然后反复）<br>方案3：whisperX跑逐句的对应<br>    问题：whisperX不知道为什么转不出标点符号，导致无法按照期望的来断句。导致也无法（没心情）看时间对应是否符合预期。<br>其他问题：<br>    1.Audacity的内置插件无法调用cmd执行命令，只能手动在cmd里面运行。导致过程也不够自动化。<br>    2.whisper模型会忽略音频中的 嗯，啊，语气词，不符合剪辑需求。（剪映做的就很好，<del>应该</del>肯定是自己训的模型了，真好啊）<br>未来方向：<br>    1.tmd这些音频剪辑软件我受够了（主要是大部分软件都没有文字轨），能不能自己写一个简单的只有剪辑功能的？<br>    2.模型能更符合播客剪辑需求就好了<br>    3.使用以下英文的那个软件（叫descript还是啥）看看参考以下</p>
-<h2 id="现状记录"><a href="#现状记录" class="headerlink" title="现状记录"></a>现状记录</h2><p>现在的hello插件时把所选区域导出到D:\audacity_file\temp</p>
-<h1 id="瞎忙活忙活了啥"><a href="#瞎忙活忙活了啥" class="headerlink" title="瞎忙活忙活了啥"></a>瞎忙活忙活了啥</h1><ul>
-<li>本地部署whisper&#x2F;whisperX模型 （whisperX的部署过程被AI狂骗）</li>
-<li>写一个python脚本，调用whisper&#x2F;whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）</li>
-<li>因为还想用llm来识别播客文本，来判断哪些需要删除哪些逻辑可以保留，所以还尝试了租gpu服务器（runpod），部署deepseek-v2-lite等，但是大失败。（主要是init module总是失败在disk full就很烦，放弃了）</li>
+                <h1 id="GAN的原理"><a href="#GAN的原理" class="headerlink" title="GAN的原理"></a>GAN的原理</h1><h1 id="U-net原理"><a href="#U-net原理" class="headerlink" title="U-net原理"></a>U-net原理</h1><h2 id="decoder-encoder-structure"><a href="#decoder-encoder-structure" class="headerlink" title="decoder &amp; encoder structure"></a>decoder &amp; encoder structure</h2><h3 id="purpose"><a href="#purpose" class="headerlink" title="purpose"></a>purpose</h3><ul>
+<li>encoder: downsample the image to a lower dimension</li>
+<li>decoder: upsample the image to a higher dimension</li>
+<li>skip connection: concatenate the feature map from the encoder with the feature map from the decoder</li>
 </ul>
-<p>先写到这后续再慢慢整理（道心破碎中……</p>
-<h2 id="test-Audacity-plug-in-function-available"><a href="#test-Audacity-plug-in-function-available" class="headerlink" title="test Audacity plug-in function available"></a>test Audacity plug-in function available</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;Hello World Test&quot;<br>;action &quot;Running Test&quot;<br><br>(format nil &quot;恭喜！Nyquist 运行成功！&quot;)<br></code></pre></td></tr></table></figure>
-
-<h2 id="Nyquist-plug-in-思路"><a href="#Nyquist-plug-in-思路" class="headerlink" title="Nyquist plug-in 思路"></a>Nyquist plug-in 思路</h2><p>第一步测试：确保 Audacity 能“吐出”音频 (WAV)<br>第二步测试：确保 Nyquist 能“传话”给 Python<br>第三步测试：确保 Audacity 能“吃进” TXT 标签</p>
-<h3 id="测试1-导出音频"><a href="#测试1-导出音频" class="headerlink" title="测试1-导出音频"></a>测试1-导出音频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试1-导出音频&quot;<br>;action &quot;正在测试导出...&quot;<br><br>(defun main ()<br>  ;; 1. 硬编码一个测试路径 (请确保这个文件夹存在！)<br>  (setq test-audio-path &quot;D:/15_MAI/audacity/temp_test.wav&quot;)<br>  <br>  ;; 2. 保存选区 (*track*) 到文件<br>  ;; s-save 是 Nyquist 保存音频的函数<br>  (s-save *track* 1000000000 test-audio-path)<br>  <br>  ;; 3. 告诉用户结果<br>  (format nil &quot;音频已导出到：~a&quot; test-audio-path)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="第二步测试：确保-Nyquist-能“传话”给-Python"><a href="#第二步测试：确保-Nyquist-能“传话”给-Python" class="headerlink" title="第二步测试：确保 Nyquist 能“传话”给 Python"></a>第二步测试：确保 Nyquist 能“传话”给 Python</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试2-构建命令&quot;<br>;action &quot;正在检查路径...&quot;<br><br>(defun main ()<br>  ;; 填入您的真实路径<br>  (setq py-exe &quot;D:/important/Conda_Envs/py310/python.exe&quot;)<br>  (setq py-script &quot;D:/15_MAI/audacity/whisperx_label_generator.py&quot;)<br>  (setq audio-file &quot;D:/15_MAI/audacity/temp_test.wav&quot;) ;; 假设这是第一步生成的文件<br>  <br>  ;; 构建命令 (注意这里要把反斜杠处理好)<br>  (setq cmd (format nil &quot;\&quot;~a\&quot; \&quot;~a\&quot; \&quot;~a\&quot;&quot; py-exe py-script audio-file))<br>  <br>  ;; 把它打印出来给您看！<br>  (format nil &quot;请复制下面的命令去CMD运行验证：\n\n~a&quot; cmd)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="测试3-是否能调用cmd执行命令"><a href="#测试3-是否能调用cmd执行命令" class="headerlink" title="测试3 是否能调用cmd执行命令"></a>测试3 是否能调用cmd执行命令</h3><h3 id="测试4-是否能导入标签"><a href="#测试4-是否能导入标签" class="headerlink" title="测试4 是否能导入标签"></a>测试4 是否能导入标签</h3>
+<h2 id="transposed-convolution-转置卷积"><a href="#transposed-convolution-转置卷积" class="headerlink" title="transposed convolution 转置卷积"></a>transposed convolution 转置卷积</h2><ul>
+<li>purpose: upsample the image to a higher dimension</li>
+<li>operation: similar to convolution, but with a flipped kernel</li>
+<li>stride: the number of pixels to move the kernel each time<ul>
+<li>在普通卷积里，Stride 大会让图变小得更快。在转置卷积里，Stride 大会让图变大得更猛。因为 Stride &#x3D; 2 意味着你在“投射”每一个像素时，中间会隔开一些距离，从而把输出图像撑得更大，这就是 Image Upscaling（图像放大） 的核心机制 。</li>
+</ul>
+</li>
+</ul>
+<p>在 U-Net 的解码器（Decoder）里：</p>
+<p>Stride (步长) 负责把图撑大（拉开间距）。</p>
+<p>Padding (填充) 负责把边缘修剪掉（为了和 Encoder 里的操作对称）。</p>
+<p>Out Padding 负责微调尺寸，确保能完美还原回 128x128 这种标准大小。</p>
+<h2 id="U-net-coding"><a href="#U-net-coding" class="headerlink" title="U-net coding"></a>U-net coding</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>Dataset prepare</p>
+</li>
+<li><p>定义 U-Net 模型<br> downblock-nn.module<br>  kernel_size&#x3D;3, stride&#x3D;1, padding&#x3D;1</p>
+<blockquote>
+<p>输入 x (3通道, 128x128)<br> ↓<br> [Conv2d] 卷积 (变成 64通道, 128x128)<br> [BatchNorm] + [ReLU]<br>     ↓<br> [Conv2d] 再卷一次 (保持 64通道, 128x128)<br> [BatchNorm] + [ReLU]<br>     ↓<br> [MaxPool2d(2)] 池化 (砍一半尺寸)<br>     ↓<br> 输出 (64通道, 64x64)</p>
+</blockquote>
+</li>
+<li><p>编译模型</p>
+</li>
+<li><p>训练模型</p>
+</li>
+<li><p>评估模型</p>
+</li>
+<li><p>可视化结果</p>
+</li>
+</ol>
+<h3 id="import-constants-for-our-dataset"><a href="#import-constants-for-our-dataset" class="headerlink" title="import constants for our dataset"></a>import constants for our dataset</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">IMG_SIZE = <span class="hljs-number">16</span> <span class="hljs-comment"># Due to stride and pooling, must be divisible by 2 multiple times</span><br>IMG_CH = <span class="hljs-number">1</span> <span class="hljs-comment"># Black and white image, no color channels</span><br>BATCH_SIZE = <span class="hljs-number">128</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -314,7 +331,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E7%9A%84%E7%9E%8E%E5%BF%99%E6%B4%BB/" class="category-chain-item">花里胡哨的瞎忙活</a>
+  <a href="/categories/MAI/" class="category-chain-item">MAI</a>
   
   
 
@@ -329,15 +346,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BD%AF%E4%BB%B6/" class="print-no-link">#软件</a>
+        <a href="/tags/NVIDA/" class="print-no-link">#NVIDA</a>
       
-        <a href="/tags/%E6%92%AD%E5%AE%A2/" class="print-no-link">#播客</a>
+        <a href="/tags/LEARN/" class="print-no-link">#LEARN</a>
       
-        <a href="/tags/whisper/" class="print-no-link">#whisper</a>
+        <a href="/tags/NOTE/" class="print-no-link">#NOTE</a>
       
-        <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/" class="print-no-link">#语音识别</a>
-      
-        <a href="/tags/%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" class="print-no-link">#音频剪辑</a>
+        <a href="/tags/MAI/" class="print-no-link">#MAI</a>
       
     </div>
   
@@ -349,8 +364,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Aydacity</div>
-      <div>https://qsynb.github.io/2025/12/03/Audiacity/</div>
+      <div>7015 NVIDA LEARN NOTE</div>
+      <div>https://qsynb.github.io/2025/12/09/7015-NVIDA-LEARN-NOTE/</div>
     </div>
     <div class="license-meta">
       
@@ -362,7 +377,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月3日</div>
+          <div>2025年12月9日</div>
         </div>
       
       
@@ -394,9 +409,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/" title="从零开始Deep-ML">
+                      <a href="/2025/12/15/7015-assignment/" title="7015 assignment">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从零开始Deep-ML</span>
+                        <span class="hidden-mobile">7015 assignment</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -404,8 +419,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/02/TO-DO-LIST/" title="TO DO LIST">
-                        <span class="hidden-mobile">TO DO LIST</span>
+                      <a href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/" title="从零开始Deep-ML">
+                        <span class="hidden-mobile">从零开始Deep-ML</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

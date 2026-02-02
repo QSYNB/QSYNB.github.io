@@ -19,26 +19,21 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+    <meta name="description" content="INFORMED SEARCHHEURISTICS FUNCTION 启发函数 Intelligent search uses heuristics to avoid searching everywhere Intelligent search does not guarantee finding a solution i.e. you couldget stuck Aims: to avoid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Aydacity">
-<meta property="og:url" content="https://qsynb.github.io/2025/12/03/Audiacity/index.html">
+<meta property="og:title" content="7002 Final Notebook">
+<meta property="og:url" content="https://qsynb.github.io/2026/01/21/7002FinalNotebook/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+<meta property="og:description" content="INFORMED SEARCHHEURISTICS FUNCTION 启发函数 Intelligent search uses heuristics to avoid searching everywhere Intelligent search does not guarantee finding a solution i.e. you couldget stuck Aims: to avoid">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-03T09:29:18.000Z">
-<meta property="article:modified_time" content="2025-12-30T15:29:40.697Z">
+<meta property="article:published_time" content="2026-01-21T06:13:22.000Z">
+<meta property="article:modified_time" content="2026-01-23T20:23:20.864Z">
 <meta property="article:author" content="秦少言">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="播客">
-<meta property="article:tag" content="语音识别">
-<meta property="article:tag" content="软件">
-<meta property="article:tag" content="音频剪辑">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Aydacity - Hexo</title>
+  <title>7002 Final Notebook - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Aydacity"></span>
+            <span id="subtitle" data-typed-text="7002 Final Notebook"></span>
           
         </div>
 
@@ -215,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-03 17:29" pubdate>
-          2025年12月3日 下午
+        <time datetime="2026-01-21 14:13" pubdate>
+          2026年1月21日 下午
         </time>
       </span>
     
@@ -227,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          6.4k 字
         
       </span>
     
@@ -238,7 +233,7 @@
         
         
         
-          19 分钟
+          54 分钟
         
       </span>
     
@@ -275,28 +270,98 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Aydacity</h1>
+            <h1 id="seo-header">7002 Final Notebook</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。</p>
-<p>省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。</p>
-<p>目前实现方式是本地whisper&#x2F;whisperX模型来跑。</p>
-<p>目前方案和问题：<br>方案1：用whisper跑逐字&#x2F;词对应（方便字&#x2F;词级别的修改）（因为我和播客搭子会有精修的需求）<br>    问题：lable数量太大太卡了。<br>方案2：whisper跑逐句的对应<br>    优点：解决了卡顿问题，两个轨2h音频可以正常使用不影响剪辑<br>    问题：whisper的时间对应不精准，在一长段文本中会有时间偏移。（在一段空白之后的文本会修正，然后反复）<br>方案3：whisperX跑逐句的对应<br>    问题：whisperX不知道为什么转不出标点符号，导致无法按照期望的来断句。导致也无法（没心情）看时间对应是否符合预期。<br>其他问题：<br>    1.Audacity的内置插件无法调用cmd执行命令，只能手动在cmd里面运行。导致过程也不够自动化。<br>    2.whisper模型会忽略音频中的 嗯，啊，语气词，不符合剪辑需求。（剪映做的就很好，<del>应该</del>肯定是自己训的模型了，真好啊）<br>未来方向：<br>    1.tmd这些音频剪辑软件我受够了（主要是大部分软件都没有文字轨），能不能自己写一个简单的只有剪辑功能的？<br>    2.模型能更符合播客剪辑需求就好了<br>    3.使用以下英文的那个软件（叫descript还是啥）看看参考以下</p>
-<h2 id="现状记录"><a href="#现状记录" class="headerlink" title="现状记录"></a>现状记录</h2><p>现在的hello插件时把所选区域导出到D:\audacity_file\temp</p>
-<h1 id="瞎忙活忙活了啥"><a href="#瞎忙活忙活了啥" class="headerlink" title="瞎忙活忙活了啥"></a>瞎忙活忙活了啥</h1><ul>
-<li>本地部署whisper&#x2F;whisperX模型 （whisperX的部署过程被AI狂骗）</li>
-<li>写一个python脚本，调用whisper&#x2F;whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）</li>
-<li>因为还想用llm来识别播客文本，来判断哪些需要删除哪些逻辑可以保留，所以还尝试了租gpu服务器（runpod），部署deepseek-v2-lite等，但是大失败。（主要是init module总是失败在disk full就很烦，放弃了）</li>
+                <h1 id="INFORMED-SEARCH"><a href="#INFORMED-SEARCH" class="headerlink" title="INFORMED SEARCH"></a>INFORMED SEARCH</h1><h2 id="HEURISTICS-FUNCTION-启发函数"><a href="#HEURISTICS-FUNCTION-启发函数" class="headerlink" title="HEURISTICS FUNCTION 启发函数"></a>HEURISTICS FUNCTION 启发函数</h2><ul>
+<li>Intelligent search uses heuristics to avoid searching everywhere</li>
+<li>Intelligent search does not guarantee finding a solution i.e. you could<br>get stuck</li>
+<li>Aims: to avoid exponential(指数) search &amp; loop. (i.e. to get solutions in<br>more effective &amp; efficient manner)</li>
 </ul>
-<p>先写到这后续再慢慢整理（道心破碎中……</p>
-<h2 id="test-Audacity-plug-in-function-available"><a href="#test-Audacity-plug-in-function-available" class="headerlink" title="test Audacity plug-in function available"></a>test Audacity plug-in function available</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;Hello World Test&quot;<br>;action &quot;Running Test&quot;<br><br>(format nil &quot;恭喜！Nyquist 运行成功！&quot;)<br></code></pre></td></tr></table></figure>
+<h2 id="Best-First-Search-最佳优先搜索"><a href="#Best-First-Search-最佳优先搜索" class="headerlink" title="Best-First Search 最佳优先搜索"></a>Best-First Search 最佳优先搜索</h2><ul>
+<li>Main idea: pick the node which looks closest to the goal.</li>
+<li>f(n) &#x3D; h(n) h(n) &#x3D; estimated cost from n to goal (heuristic)</li>
+<li>Pick the lowest estimated cost to explore.</li>
+</ul>
+<h3 id="Admissible-Heuristic"><a href="#Admissible-Heuristic" class="headerlink" title="Admissible Heuristic"></a>Admissible Heuristic</h3><ul>
+<li>当且仅当它永远不会高估 (Never Overestimates) 从当前节点到目标节点的实际最小代价。<br>  $$0 \leq h(n) \leq h^*(n)$$<ul>
+<li>$为什么 Admissible 这么重要？$<br>  如果 $h(n)$ 是 Admissible 的，A 算法一定能找到最优解（最短路径）。*</li>
+</ul>
+</li>
+</ul>
+<h3 id="Consistent-Heuristic"><a href="#Consistent-Heuristic" class="headerlink" title="Consistent Heuristic"></a>Consistent Heuristic</h3><ul>
+<li><p>如果一个启发函数 $h(n)$ 满足以下条件，我们称它是一致的 (Consistent) 或单调的 (Monotonicity)：<br>  The estimated cost to the goal from node $n$ is no greater than the step cost to a neighbor $n’$ plus the estimated cost from $n’$ to the goal.</p>
+<p>  $$h(A) \leq cost(A, B) + h(B)$$</p>
+<ul>
+<li><p>$h(A)$：从 A 直接飞到 Goal 的估计距离。</p>
+</li>
+<li><p>$cost(A, B)$：从 A 走到 B 的实际路程。</p>
+</li>
+<li><p>$h(B)$：从 B 飞到 Goal 的估计距离。 </p>
+</li>
+<li><p>如果 $h(n)$ 是 Inconsistent (不一致) 会发生什么？ </p>
+</li>
+<li><p>这正是你笔记中提到的重点。如果 $h(n)$ 不一致：$f(n)$ 会下降： 在搜索过程中，你可能会发现路径上后续节点的 $f$ 值比父节点还要小。这在逻辑上很奇怪（因为你走得更远了，总代价估计反而变小了）。效率变低： A* 算法可能在第一次到达某个节点时，并没有找到到达该节点的“最短路径”。这意味着 A* 可能需要重复处理 (Re-expand) 同一个节点多次，这会大大增加计算量。修复方法： 为了保证找到最优解，如果 $h(n)$ 不一致，你必须在发现更好的路径时把已经关闭的节点重新放回“待处理列表 (Open List)”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><ul>
+<li>时间复杂度：$O(b^d)$，其中 $b$ 是 branching factor（分支因子），$d$ 是目标节点的深度。</li>
+<li>空间复杂度：$O(b^d)$，因为在最坏情况下，A* 算法需要存储所有可能的路径。</li>
+</ul>
+<h2 id="A-Search-A-搜索"><a href="#A-Search-A-搜索" class="headerlink" title="A* Search  A*搜索"></a>A* Search  A*搜索</h2><ul>
+<li>Main idea: pick the node which looks most promising to explore</li>
+<li>f(n) &#x3D; g(n) + h(n)<ul>
+<li>g(n) &#x3D; cost so far to reach n</li>
+<li>h(n) &#x3D; estimated cost from n to goal (heuristic)</li>
+<li>f(n) &#x3D; estimated total cost of path through n to goal</li>
+</ul>
+</li>
+</ul>
+<h3 id="Properties-of-A-Search"><a href="#Properties-of-A-Search" class="headerlink" title="Properties of A* Search"></a>Properties of A* Search</h3><ul>
+<li>completeness: if a solution exists, A* is guaranteed to find it.</li>
+<li>optimality: A* always finds the optimal solution.</li>
+<li>time complexity: $O(b^d)$</li>
+<li>space complexity: $O(b^d)$</li>
+</ul>
+<h3 id="Example-Qustions"><a href="#Example-Qustions" class="headerlink" title="Example Qustions"></a>Example Qustions</h3><ul>
+<li>Q1. Algorithm Comparison<br>Explain the fundamental difference between the evaluation functions $f(n)$ of Greedy Best-First Search and A Search*. How does this difference affect their ability to find the shortest path?</li>
+</ul>
+<p>Greedy Best-First Search: F(n) &#x3D; h(n)<br><del>h(n) &#x3D; cost of current node to the goal</del> h(n) &#x3D; <strong>estimated</strong> cost from n to goal (heuristic)<br>A* search : f(n) &#x3D; g(n)+h(n)<br>g(n) &#x3D; <del>cost from the start to the current node</del> cost so far to reach n<br>h(n) &#x3D; <del>cost from the current node to the goal</del>  estimated cost from n to goal (heuristic)<br>f(n) &#x3D; <del>total estimate cost</del> estimated total cost of path through n to goal<br>Greedy BFS is short-sighted (looks only at the goal)<br>A* is balanced (considers both the path cost and the goal distance).</p>
+<ul>
+<li><p>Heuristic Properties<br>Define what it means for a heuristic $h(n)$ to be admissible. Why is admissibility a mandatory requirement for A* Search to be optimal?<br>Admissible means the heuristic never overestimates the actual cost. If we overestimate, A* might skip the optimal path because it ‘thinks’ that path is too expensive.</p>
+</li>
+<li><p>Q3. The Role of Lists<br>The Role of Lists In the context of A* Search, describe the purpose of the Open List and the Closed List. What happens if the algorithm encounters a node that is already in the Closed List?<br>The algorithm will discard&#x2F;ignore the node to avoid redundant work and prevent infinite loops.</p>
+</li>
+<li><p>Q4. Inconsistency Issues<br>Inconsistency Issues Based on your notes, what are the consequences of using an inconsistent heuristic in A* Search? How does it affect the efficiency of the “Closed List”?<br>The consequence is that the $f(n)$ value may decrease along a path. This forces the algorithm to re-open and re-evaluate nodes in the Closed List, which significantly reduces efficiency.</p>
+</li>
+<li><p>Real-world Heuristics<br>Suppose you are designing a navigation app. You use Straight-Line Distance as your heuristic $h(n)$.<br>Is this heuristic admissible? Justify your answer.<br>Would Greedy Best-First Search always find the shortest driving route using this heuristic? Why or why not?</p>
+</li>
+</ul>
+<p>Because Greedy BFS only focuses on the distance to the goal. It might lead you into a dead end or a local optimum (like a road that goes straight toward the goal but is actually a cul-de-sac&#x2F;blocked road). It doesn’t care if the road it’s taking is $100km$ long as long as it “looks” like it’s heading toward the target.</p>
+<h1 id="MACHINE-LEARNING"><a href="#MACHINE-LEARNING" class="headerlink" title="MACHINE LEARNING"></a>MACHINE LEARNING</h1><h2 id="SUPPORT-VECTOR-MACHINE"><a href="#SUPPORT-VECTOR-MACHINE" class="headerlink" title="SUPPORT VECTOR MACHINE"></a>SUPPORT VECTOR MACHINE</h2><p>Supervised Learning, classification problem<br>Support Vectors: the data points that are closest to the decision boundary.<br>Dicision boundary: the line that separate the tow classes.<br>Classification Margin: the distance between the decision boundary and the support vectors.<br>The distance between the hyperplane and the nearest data point from either class. SVM aims to maximize this margin.<br>最优超平面 (Optimal Hyperplane): separates data into two classes.</p>
+<h2 id="The-Kernel-Trick"><a href="#The-Kernel-Trick" class="headerlink" title="The Kernel Trick"></a>The Kernel Trick</h2><p>Kernels transform the input data from a low-dimensional space into a higher-dimensional space where a linear hyperplane can separate the data.<br>Linearly Inseparable<br>Kernels transform the input data from a low-dimensional space into a higher-dimensional space where a linear hyperplane can separate the data.<br>Common Kernels (常用核函数):<br>Linear Kernel<br>Polynomial Kernel<br>RBF (Radial Basis Function) &#x2F; Gaussian Kernel</p>
+<h2 id="how-to-do-scaling-for-kernel"><a href="#how-to-do-scaling-for-kernel" class="headerlink" title="how to do scaling for kernel"></a>how to do scaling for kernel</h2><p>Reason: SVM finds the optimal hyperplane by maximizing the margin, which involves calculating Euclidean distances between points.<br>The Issue (问题): If one feature has a very large range (e.g., Income: $0 - 100,000$) and another has a small range (e.g., Age: $0 - 100$), the distance calculation will be dominated by the larger feature.<br>（如果一个特征的范围很大，而另一个很小，距离计算将被大范围特征主导，导致模型忽略小范围特征。）<br>Method (方法):Normalization (归一化): Scaling data into a range of $[0, 1]$.Standardization (标准化): Centering data around a mean of $0$ with a standard deviation of $1$.</p>
+<p>. 现实世界应用 (Real-World Applications)<br>考试时，如果题目要求 “apply to real world”，你可以使用以下案例：</p>
+<p>Bioinformatics &#x2F; Medical Imaging (生物信息学&#x2F;医学影像):</p>
+<p>Scenario: Classifying tumors as Malignant (恶性) or Benign (良性) based on cell features.</p>
+<p>Application: SVM uses multiple clinical features (size, texture, age) to find a boundary that separates healthy tissue from cancerous tissue.</p>
+<p>Text Categorization (文本分类):</p>
+<p>Scenario: Sorting news articles into categories like “Sports,” “Politics,” or “Tech.”</p>
+<p>Application: SVM is effective for high-dimensional data like text, where each word can be a feature</p>
+<h2 id="k-NN-k-Nearest-Neighbors-k-最近邻算法"><a href="#k-NN-k-Nearest-Neighbors-k-最近邻算法" class="headerlink" title="k-NN (k-Nearest Neighbors &#x2F; k-最近邻算法)"></a>k-NN (k-Nearest Neighbors &#x2F; k-最近邻算法)</h2><p>k-NN 是一种基于实例的学习 (Instance-based learning) 或 惰性学习 (Lazy learning) 算法。<br>Lazy Learning: 它在训练阶段不构建任何模型，只是把所有数据存起来。只有在进行预测（测试阶段）时，它才开始计算。<br>基本原理： “Tell me who your neighbors are, and I’ll tell you who you are.”（看你的邻居是谁，就知道你是谁。）</p>
+<p> 为什么 k-NN 必须做 Scaling? (Crucial Point!)这是你笔记里 “how to do scaling for kernel” 同样适用的地方：k-NN 完全依赖于距离。如果一个特征（如收入 $0-100k$）的数值范围比另一个（如年龄 $0-80$）大得多，那么距离计算将完全被收入主导。结论： 在运行 k-NN 之前，必须进行 Normalization 或 Standardization。</p>
+<p> 现实世界应用 (Real-world Application)<br>按照老师要求 “apply to real world”，可以准备这个例子：</p>
+<p>推荐系统 (Recommender Systems):</p>
+<p>场景： 电影推荐（类似 Netflix）。</p>
+<p>应用： 如果用户 A 喜欢的电影类型、导演和评分习惯与用户 B、C、D 非常接近（即在特征空间中互为 Neighbors），那么系统就会把 B、C、D 看过但 A 没看过的电影推荐给 A。</p>
+<h1 id="What-Is-AI-Ethics"><a href="#What-Is-AI-Ethics" class="headerlink" title="What Is AI Ethics?"></a>What Is AI Ethics?</h1><p>AI Ethics refers to the study and application of moral values, principles, and governance mechanisms to:<br>• Guide design, development, deployment, and use of AI systems<br>• Prevent harm, unfairness, and misuse<br>• Ensure AI systems are trustworthy, accountable, and human-centric</p>
+<h2 id="Responsible-AI-RAI"><a href="#Responsible-AI-RAI" class="headerlink" title="Responsible AI (RAI)"></a>Responsible AI (RAI)</h2><h2 id="Types-of-Harm-Caused-by-Unethical-AI"><a href="#Types-of-Harm-Caused-by-Unethical-AI" class="headerlink" title="Types of Harm Caused by Unethical AI"></a>Types of Harm Caused by Unethical AI</h2><p>Ethical risk &#x3D; probability that an AI system causes ethical harm</p>
+<p>Risk Category： Bias Privacy Opacity Automation Bias Security</p>
 
-<h2 id="Nyquist-plug-in-思路"><a href="#Nyquist-plug-in-思路" class="headerlink" title="Nyquist plug-in 思路"></a>Nyquist plug-in 思路</h2><p>第一步测试：确保 Audacity 能“吐出”音频 (WAV)<br>第二步测试：确保 Nyquist 能“传话”给 Python<br>第三步测试：确保 Audacity 能“吃进” TXT 标签</p>
-<h3 id="测试1-导出音频"><a href="#测试1-导出音频" class="headerlink" title="测试1-导出音频"></a>测试1-导出音频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试1-导出音频&quot;<br>;action &quot;正在测试导出...&quot;<br><br>(defun main ()<br>  ;; 1. 硬编码一个测试路径 (请确保这个文件夹存在！)<br>  (setq test-audio-path &quot;D:/15_MAI/audacity/temp_test.wav&quot;)<br>  <br>  ;; 2. 保存选区 (*track*) 到文件<br>  ;; s-save 是 Nyquist 保存音频的函数<br>  (s-save *track* 1000000000 test-audio-path)<br>  <br>  ;; 3. 告诉用户结果<br>  (format nil &quot;音频已导出到：~a&quot; test-audio-path)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="第二步测试：确保-Nyquist-能“传话”给-Python"><a href="#第二步测试：确保-Nyquist-能“传话”给-Python" class="headerlink" title="第二步测试：确保 Nyquist 能“传话”给 Python"></a>第二步测试：确保 Nyquist 能“传话”给 Python</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试2-构建命令&quot;<br>;action &quot;正在检查路径...&quot;<br><br>(defun main ()<br>  ;; 填入您的真实路径<br>  (setq py-exe &quot;D:/important/Conda_Envs/py310/python.exe&quot;)<br>  (setq py-script &quot;D:/15_MAI/audacity/whisperx_label_generator.py&quot;)<br>  (setq audio-file &quot;D:/15_MAI/audacity/temp_test.wav&quot;) ;; 假设这是第一步生成的文件<br>  <br>  ;; 构建命令 (注意这里要把反斜杠处理好)<br>  (setq cmd (format nil &quot;\&quot;~a\&quot; \&quot;~a\&quot; \&quot;~a\&quot;&quot; py-exe py-script audio-file))<br>  <br>  ;; 把它打印出来给您看！<br>  (format nil &quot;请复制下面的命令去CMD运行验证：\n\n~a&quot; cmd)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="测试3-是否能调用cmd执行命令"><a href="#测试3-是否能调用cmd执行命令" class="headerlink" title="测试3 是否能调用cmd执行命令"></a>测试3 是否能调用cmd执行命令</h3><h3 id="测试4-是否能导入标签"><a href="#测试4-是否能导入标签" class="headerlink" title="测试4 是否能导入标签"></a>测试4 是否能导入标签</h3>
                 
               </div>
             
@@ -304,42 +369,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E7%9A%84%E7%9E%8E%E5%BF%99%E6%B4%BB/" class="category-chain-item">花里胡哨的瞎忙活</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6/" class="print-no-link">#软件</a>
-      
-        <a href="/tags/%E6%92%AD%E5%AE%A2/" class="print-no-link">#播客</a>
-      
-        <a href="/tags/whisper/" class="print-no-link">#whisper</a>
-      
-        <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/" class="print-no-link">#语音识别</a>
-      
-        <a href="/tags/%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" class="print-no-link">#音频剪辑</a>
-      
-    </div>
   
 </div>
 
@@ -349,8 +378,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Aydacity</div>
-      <div>https://qsynb.github.io/2025/12/03/Audiacity/</div>
+      <div>7002 Final Notebook</div>
+      <div>https://qsynb.github.io/2026/01/21/7002FinalNotebook/</div>
     </div>
     <div class="license-meta">
       
@@ -362,7 +391,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月3日</div>
+          <div>2026年1月21日</div>
         </div>
       
       
@@ -394,18 +423,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/" title="从零开始Deep-ML">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从零开始Deep-ML</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/02/TO-DO-LIST/" title="TO DO LIST">
-                        <span class="hidden-mobile">TO DO LIST</span>
+                      <a href="/2026/01/03/7002-group-assignment/" title="7002 group assignment">
+                        <span class="hidden-mobile">7002 group assignment</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

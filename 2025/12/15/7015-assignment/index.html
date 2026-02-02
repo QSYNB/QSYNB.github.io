@@ -19,26 +19,21 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+    <meta name="description" content="IntroductionTraditional image-only models can classifyabnormalities but cannot understand clinical questions or provide interactive responses.To address this, recent AI systems combine vision and lang">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Aydacity">
-<meta property="og:url" content="https://qsynb.github.io/2025/12/03/Audiacity/index.html">
+<meta property="og:title" content="7015 assignment">
+<meta property="og:url" content="https://qsynb.github.io/2025/12/15/7015-assignment/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="写在前面因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。 省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。 目前实现方式是本地whisper&#x2F;">
+<meta property="og:description" content="IntroductionTraditional image-only models can classifyabnormalities but cannot understand clinical questions or provide interactive responses.To address this, recent AI systems combine vision and lang">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-03T09:29:18.000Z">
-<meta property="article:modified_time" content="2025-12-30T15:29:40.697Z">
+<meta property="article:published_time" content="2025-12-15T11:35:45.000Z">
+<meta property="article:modified_time" content="2025-12-31T11:38:28.433Z">
 <meta property="article:author" content="秦少言">
-<meta property="article:tag" content="whisper">
-<meta property="article:tag" content="播客">
-<meta property="article:tag" content="语音识别">
-<meta property="article:tag" content="软件">
-<meta property="article:tag" content="音频剪辑">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Aydacity - Hexo</title>
+  <title>7015 assignment - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Aydacity"></span>
+            <span id="subtitle" data-typed-text="7015 assignment"></span>
           
         </div>
 
@@ -215,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-12-03 17:29" pubdate>
-          2025年12月3日 下午
+        <time datetime="2025-12-15 19:35" pubdate>
+          2025年12月15日 晚上
         </time>
       </span>
     
@@ -227,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          900 字
         
       </span>
     
@@ -238,7 +233,7 @@
         
         
         
-          19 分钟
+          8 分钟
         
       </span>
     
@@ -275,28 +270,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Aydacity</h1>
+            <h1 id="seo-header">7015 assignment</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>因为播客剪辑工作繁重，觉得剪映的文本识别，框选文本删除音频的功能很好用（就是在于不和波形同步操作的话，会有波形切断生硬的问题），所以想自己优化一下。</p>
-<p>省略过程，目前退而求其次的想法是：想在音频剪辑软件如（audacity）里面实现一个音频轨下面有一个lable轨，lable轨的文字显示的是这段音频对应的文本。这样不用听一遍才知道这段音频是什么。</p>
-<p>目前实现方式是本地whisper&#x2F;whisperX模型来跑。</p>
-<p>目前方案和问题：<br>方案1：用whisper跑逐字&#x2F;词对应（方便字&#x2F;词级别的修改）（因为我和播客搭子会有精修的需求）<br>    问题：lable数量太大太卡了。<br>方案2：whisper跑逐句的对应<br>    优点：解决了卡顿问题，两个轨2h音频可以正常使用不影响剪辑<br>    问题：whisper的时间对应不精准，在一长段文本中会有时间偏移。（在一段空白之后的文本会修正，然后反复）<br>方案3：whisperX跑逐句的对应<br>    问题：whisperX不知道为什么转不出标点符号，导致无法按照期望的来断句。导致也无法（没心情）看时间对应是否符合预期。<br>其他问题：<br>    1.Audacity的内置插件无法调用cmd执行命令，只能手动在cmd里面运行。导致过程也不够自动化。<br>    2.whisper模型会忽略音频中的 嗯，啊，语气词，不符合剪辑需求。（剪映做的就很好，<del>应该</del>肯定是自己训的模型了，真好啊）<br>未来方向：<br>    1.tmd这些音频剪辑软件我受够了（主要是大部分软件都没有文字轨），能不能自己写一个简单的只有剪辑功能的？<br>    2.模型能更符合播客剪辑需求就好了<br>    3.使用以下英文的那个软件（叫descript还是啥）看看参考以下</p>
-<h2 id="现状记录"><a href="#现状记录" class="headerlink" title="现状记录"></a>现状记录</h2><p>现在的hello插件时把所选区域导出到D:\audacity_file\temp</p>
-<h1 id="瞎忙活忙活了啥"><a href="#瞎忙活忙活了啥" class="headerlink" title="瞎忙活忙活了啥"></a>瞎忙活忙活了啥</h1><ul>
-<li>本地部署whisper&#x2F;whisperX模型 （whisperX的部署过程被AI狂骗）</li>
-<li>写一个python脚本，调用whisper&#x2F;whisperX模型，将音频转成逐句的对应文本。生成lable格式的txt。（其实是AI一键写的我没怎么看，后续要好好看一下）</li>
-<li>因为还想用llm来识别播客文本，来判断哪些需要删除哪些逻辑可以保留，所以还尝试了租gpu服务器（runpod），部署deepseek-v2-lite等，但是大失败。（主要是init module总是失败在disk full就很烦，放弃了）</li>
-</ul>
-<p>先写到这后续再慢慢整理（道心破碎中……</p>
-<h2 id="test-Audacity-plug-in-function-available"><a href="#test-Audacity-plug-in-function-available" class="headerlink" title="test Audacity plug-in function available"></a>test Audacity plug-in function available</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;Hello World Test&quot;<br>;action &quot;Running Test&quot;<br><br>(format nil &quot;恭喜！Nyquist 运行成功！&quot;)<br></code></pre></td></tr></table></figure>
+                <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Traditional image-only models can classify<br>abnormalities but cannot understand clinical questions or provide interactive responses.<br>To address this, recent AI systems combine vision and language to perform Medical Visual Question Answering (Med-VQA), where a model answers natural-language questions<br>based on a medical image (e.g., “Is there pneumonia?”, “What organ is shown?”, “Is there<br>a mass?”).</p>
+<h2 id="dataset-choice"><a href="#dataset-choice" class="headerlink" title="dataset choice"></a>dataset choice</h2><p>We choose the most popular dataset for Med-VQA, which is SLACK.</p>
+<h3 id="Analysis-of-SLACK-Dataset"><a href="#Analysis-of-SLACK-Dataset" class="headerlink" title="Analysis of SLACK Dataset"></a>Analysis of SLACK Dataset</h3><h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><h3 id="Data-Preparation"><a href="#Data-Preparation" class="headerlink" title="Data Preparation"></a>Data Preparation</h3><ol>
+<li><p>Import data</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> datasets <span class="hljs-keyword">import</span> load_dataset<br>dataset = load_dataset(<span class="hljs-string">&quot;slack&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p> 运行之前要安装datasets库</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install datasets<br></code></pre></td></tr></table></figure>
+<p> 这段代码在选择的数据集里面可以复制到（<br> 查看数据集的基本信息</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(dataset)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>答案词汇表构建和编码<br> 从数据集的训练集和验证集中提取所有可能的答案词汇，并构建一个词汇表。<br> 每个答案词汇都被映射到一个唯一的整数索引。<br> 为什么需要这样？<br> 因为模型需要将答案词汇转换为向量表示，而整数索引可以方便地进行这种转换。</p>
+</li>
+</ol>
+<h3 id="conda-新环境"><a href="#conda-新环境" class="headerlink" title="conda 新环境"></a>conda 新环境</h3><p><code>conda create -p D:\important\Conda_Envs\cv7006 python=3.10</code></p>
+<h3 id="激活jupyer-notebook"><a href="#激活jupyer-notebook" class="headerlink" title="激活jupyer notebook"></a>激活jupyer notebook</h3><p>pip install notebook ipykernel<br>python -m ipykernel install –user –name mp –display-name “Python (mp)”</p>
 
-<h2 id="Nyquist-plug-in-思路"><a href="#Nyquist-plug-in-思路" class="headerlink" title="Nyquist plug-in 思路"></a>Nyquist plug-in 思路</h2><p>第一步测试：确保 Audacity 能“吐出”音频 (WAV)<br>第二步测试：确保 Nyquist 能“传话”给 Python<br>第三步测试：确保 Audacity 能“吃进” TXT 标签</p>
-<h3 id="测试1-导出音频"><a href="#测试1-导出音频" class="headerlink" title="测试1-导出音频"></a>测试1-导出音频</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试1-导出音频&quot;<br>;action &quot;正在测试导出...&quot;<br><br>(defun main ()<br>  ;; 1. 硬编码一个测试路径 (请确保这个文件夹存在！)<br>  (setq test-audio-path &quot;D:/15_MAI/audacity/temp_test.wav&quot;)<br>  <br>  ;; 2. 保存选区 (*track*) 到文件<br>  ;; s-save 是 Nyquist 保存音频的函数<br>  (s-save *track* 1000000000 test-audio-path)<br>  <br>  ;; 3. 告诉用户结果<br>  (format nil &quot;音频已导出到：~a&quot; test-audio-path)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="第二步测试：确保-Nyquist-能“传话”给-Python"><a href="#第二步测试：确保-Nyquist-能“传话”给-Python" class="headerlink" title="第二步测试：确保 Nyquist 能“传话”给 Python"></a>第二步测试：确保 Nyquist 能“传话”给 Python</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs Nyquist">;nyquist plug-in<br>;version 4<br>;type process<br>;name &quot;测试2-构建命令&quot;<br>;action &quot;正在检查路径...&quot;<br><br>(defun main ()<br>  ;; 填入您的真实路径<br>  (setq py-exe &quot;D:/important/Conda_Envs/py310/python.exe&quot;)<br>  (setq py-script &quot;D:/15_MAI/audacity/whisperx_label_generator.py&quot;)<br>  (setq audio-file &quot;D:/15_MAI/audacity/temp_test.wav&quot;) ;; 假设这是第一步生成的文件<br>  <br>  ;; 构建命令 (注意这里要把反斜杠处理好)<br>  (setq cmd (format nil &quot;\&quot;~a\&quot; \&quot;~a\&quot; \&quot;~a\&quot;&quot; py-exe py-script audio-file))<br>  <br>  ;; 把它打印出来给您看！<br>  (format nil &quot;请复制下面的命令去CMD运行验证：\n\n~a&quot; cmd)<br>)<br><br>(main)<br></code></pre></td></tr></table></figure>
-<h3 id="测试3-是否能调用cmd执行命令"><a href="#测试3-是否能调用cmd执行命令" class="headerlink" title="测试3 是否能调用cmd执行命令"></a>测试3 是否能调用cmd执行命令</h3><h3 id="测试4-是否能导入标签"><a href="#测试4-是否能导入标签" class="headerlink" title="测试4 是否能导入标签"></a>测试4 是否能导入标签</h3>
                 
               </div>
             
@@ -304,42 +298,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E7%9A%84%E7%9E%8E%E5%BF%99%E6%B4%BB/" class="category-chain-item">花里胡哨的瞎忙活</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E8%BD%AF%E4%BB%B6/" class="print-no-link">#软件</a>
-      
-        <a href="/tags/%E6%92%AD%E5%AE%A2/" class="print-no-link">#播客</a>
-      
-        <a href="/tags/whisper/" class="print-no-link">#whisper</a>
-      
-        <a href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/" class="print-no-link">#语音识别</a>
-      
-        <a href="/tags/%E9%9F%B3%E9%A2%91%E5%89%AA%E8%BE%91/" class="print-no-link">#音频剪辑</a>
-      
-    </div>
   
 </div>
 
@@ -349,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Aydacity</div>
-      <div>https://qsynb.github.io/2025/12/03/Audiacity/</div>
+      <div>7015 assignment</div>
+      <div>https://qsynb.github.io/2025/12/15/7015-assignment/</div>
     </div>
     <div class="license-meta">
       
@@ -362,7 +320,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年12月3日</div>
+          <div>2025年12月15日</div>
         </div>
       
       
@@ -394,9 +352,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/12/03/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8BDeep-ML/" title="从零开始Deep-ML">
+                      <a href="/2025/12/27/sreamlit-%E6%98%AF%E5%B0%BC%E7%8E%9B%E7%9A%84%E4%BB%80%E4%B9%88/" title="sreamlit 是尼玛的什么">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从零开始Deep-ML</span>
+                        <span class="hidden-mobile">sreamlit 是尼玛的什么</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -404,8 +362,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/12/02/TO-DO-LIST/" title="TO DO LIST">
-                        <span class="hidden-mobile">TO DO LIST</span>
+                      <a href="/2025/12/09/7015-NVIDA-LEARN-NOTE/" title="7015 NVIDA LEARN NOTE">
+                        <span class="hidden-mobile">7015 NVIDA LEARN NOTE</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
