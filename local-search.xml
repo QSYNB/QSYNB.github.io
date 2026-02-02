@@ -44,8 +44,8 @@
   
   <entry>
     <title>sreamlit 是尼玛的什么</title>
-    <link href="/2025/12/27/sreamlit-%E6%98%AF%E5%B0%BC%E7%8E%9B%E7%9A%84%E4%BB%80%E4%B9%88/"/>
-    <url>/2025/12/27/sreamlit-%E6%98%AF%E5%B0%BC%E7%8E%9B%E7%9A%84%E4%BB%80%E4%B9%88/</url>
+    <link href="/2025/12/27/sreamlit/"/>
+    <url>/2025/12/27/sreamlit/</url>
     
     <content type="html"><![CDATA[<h3 id="ide里怎么选环境运行python"><a href="#ide里怎么选环境运行python" class="headerlink" title="ide里怎么选环境运行python"></a>ide里怎么选环境运行python</h3><p>file-preference-setting-python interpreter</p><h3 id="怎么看当前conda-环境的python路径"><a href="#怎么看当前conda-环境的python路径" class="headerlink" title="怎么看当前conda 环境的python路径"></a>怎么看当前conda 环境的python路径</h3><p><code> where python</code></p><h3 id="我怎么在ide的terminal里面用conda"><a href="#我怎么在ide的terminal里面用conda" class="headerlink" title="我怎么在ide的terminal里面用conda"></a>我怎么在ide的terminal里面用conda</h3><p>可能需要 <code>conda init powershell</code></p><h3 id="streamlit-run-命令"><a href="#streamlit-run-命令" class="headerlink" title="streamlit run 命令"></a>streamlit run 命令</h3><p>streamlit run webApp.py</p>]]></content>
     
