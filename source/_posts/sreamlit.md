@@ -1,5 +1,5 @@
 ---
-title: sreamlit 是尼玛的什么
+title: sreamlit
 date: 2025-12-27 13:37:24
 tags:
 ---
