@@ -80,4 +80,19 @@ def solve_jacobi(A, b, n) -> torch.Tensor:
     return x
 ```
         
-    
+### Singular Value Decomposition (SVD)
+1. what is Singular Value Decomposition?
+
+
+### Normal eqation 正规方程
+在学术论文或面试中，它通常被描述为线性回归的解析解 (Analytical Solution)。所谓“解析解”，意思就是你可以通过公式直接一步算出答案，而不需要像梯度下降那样反复迭代。
+- (The Formula)
+    - $w = (X^T X)^{-1} X^T y$
+
+$\theta$ (Theta)：你要找的答案。包含所有的斜率（weights）和截距（intercept）。
+$X$：你的输入数据矩阵（特征）。
+$y$：你的目标标签向量（结果）。
+$X^T$：$X$ 的转置（行变列，列变行）。
+$(\dots)^{-1}$：逆矩阵（相当于标量运算里的倒数）。
+
+

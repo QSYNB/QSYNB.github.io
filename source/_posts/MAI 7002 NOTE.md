@@ -20,7 +20,6 @@ AI's core capabilities encompass **learning** to acquire information, **reasonin
 ## Types of AI systems
 
 Narrow AI (Week AI) General AI Super AI
-
 ## AI history
 
 ## The Turing Test: A benchmark for intelligence
