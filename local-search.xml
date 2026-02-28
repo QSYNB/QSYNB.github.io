@@ -4,6 +4,84 @@
   
   
   <entry>
+    <title>python</title>
+    <link href="/2026/02/24/python/"/>
+    <url>/2026/02/24/python/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-comment"># 一行搞定：遍历 x，如果是 &lt;5 就给 &#x27;0&#x27;，否则给 &#x27;1&#x27;</span><br>    <span class="hljs-comment"># .join() 把列表里的元素用 &#x27;&#x27; 连接起来</span><br>    <span class="hljs-comment"># 单引号或者双引号都可以</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(d) &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> x]) <br><br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-comment"># 创建映射表：01234 变成 0，56789 变成 1</span><br>    table = <span class="hljs-built_in">str</span>.maketrans(<span class="hljs-string">&quot;0123456789&quot;</span>, <span class="hljs-string">&quot;0000011111&quot;</span>)<br>    <span class="hljs-comment"># .translate() 把 x 里的字符根据 table 映射表替换</span><br>    <span class="hljs-keyword">return</span> x.translate(table)<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_char</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-comment"># 从索引 1 开始，截取到倒数第 1 个之前</span><br>    <span class="hljs-keyword">return</span> s[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure><p>关键知识点：split()<br>语法：string.split(separator)<br>例子：”10:5”.split(“:”) 结果是 [‘10’, ‘5’]。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">points</span>(<span class="hljs-params">games</span>):<br>    <span class="hljs-comment"># 逻辑：如果是赢(3分)，如果是平(1分)，否则0分</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] &gt; g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] == g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> games)<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_needle</span>(<span class="hljs-params">haystack</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;found the needle at position <span class="hljs-subst">&#123;haystack.index(<span class="hljs-string">&quot;needle&quot;</span>)&#125;</span>&#x27;</span><br>    <span class="hljs-comment"># .index() 查找子字符串第一次出现的索引</span><br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">getCount</span>(<span class="hljs-params">inputStr</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> let <span class="hljs-keyword">in</span> inputStr <span class="hljs-keyword">if</span> let <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;aeiouAEIOU&quot;</span>)<br><span class="hljs-comment"># let in &quot;aeiouAEIOU&quot; 检查 let 是否在这个字符串里 </span><br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">4</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">all</span>(n <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;0123456789&quot;</span> <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> pin)<br>    <span class="hljs-comment"># all() 检查可迭代对象里的所有元素是否都为 True</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(pin) <span class="hljs-keyword">in</span> (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> pin.isdigit()<br>    <span class="hljs-comment"># pin.isdigit() 检查 pin 是否只包含数字字符</span><br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_positives_sum_negatives</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">0</span>),<span class="hljs-built_in">sum</span>(x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &lt;<span class="hljs-number">0</span>)] <span class="hljs-keyword">if</span> arr <span class="hljs-keyword">else</span> []<br></code></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">filter_list</span>(<span class="hljs-params">l</span>):<br>    <span class="hljs-comment"># 翻译：如果 i 是 int 类型的一个实例</span><br>    <span class="hljs-keyword">return</span> [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(i, <span class="hljs-built_in">int</span>)]<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>individual agent</title>
+    <link href="/2026/02/23/individual-agent/"/>
+    <url>/2026/02/23/individual-agent/</url>
+    
+    <content type="html"><![CDATA[<ul><li>today to do list</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>日常</title>
+    <link href="/2026/02/23/%E6%97%A5%E5%B8%B8/"/>
+    <url>/2026/02/23/%E6%97%A5%E5%B8%B8/</url>
+    
+    <content type="html"><![CDATA[<p>偶尔会突然产生：活着真好啊这种想法<br>觉得有好啊多事情可以做。<br>但最近年纪上来了，想到，为了避免到不得不死的时候还有很多事情没做，导致不想死的问题出现。所以要努力的尽快的做有趣的事情。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>coursera</title>
+    <link href="/2026/02/20/coursera/"/>
+    <url>/2026/02/20/coursera/</url>
+    
+    <content type="html"><![CDATA[<h1 id="in-context-learning-and-prompt-engineering"><a href="#in-context-learning-and-prompt-engineering" class="headerlink" title="in-context learning and prompt engineering"></a>in-context learning and prompt engineering</h1><p>Prompt engineering<br>Basic prompt<br>Zero-shot prompt</p><p>Congratulations! You have completed this module. At this point in the course, you know:</p><p>In-context learning is a prompt engineering method where demonstrations of the task are provided to the model as part of the prompt.</p><p>Prompts are inputs given to an LLM to guide it toward performing a specific task.</p><p>Prompt engineering is a process where you design and refine the prompt questions, commands, or statements to get relevant and accurate responses.</p><p>Advantages of prompt engineering include that it boosts the effectiveness and accuracy of LLMs, ensures relevant responses, facilitates user expectations, and eliminates the need for continual fine-tuning.</p><p>A prompt consists of four key elements: the instructions, the context, the input data, and the output indicator.</p><p>Advanced methods for prompt engineering include zero-shot prompts, few-shot prompts, chain-of-thought prompting, and self-consistency.</p><p>Prompt engineering tools can facilitate interactions with LLMs.</p><p>LangChain uses ‘prompt templates,’ which are predefined recipes for generating effective prompts for LLMs.</p><p>An agent is a key component in prompt applications that can perform complex tasks across various domains using different prompts.</p><p>LCEL pattern structures workflows use the pipe operator (|) for clear data flow.</p><p>Prompts are defined using templates with variables in curly braces {}.</p><p>Components can be linked using RunnableSequence for sequential execution.</p><p>RunnableParallel allows multiple components to run concurrently with the same input.</p><p>LCEL provides a more concise syntax by replacing RunnableSequence with the pipe operator.</p><p>Type coercion in LCEL automatically converts functions and dictionaries into compatible components.</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>陪伴游戏稿子</title>
+    <link href="/2026/02/20/%E9%99%AA%E4%BC%B4%E6%B8%B8%E6%88%8F%E7%A8%BF%E5%AD%90/"/>
+    <url>/2026/02/20/%E9%99%AA%E4%BC%B4%E6%B8%B8%E6%88%8F%E7%A8%BF%E5%AD%90/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>English</title>
+    <link href="/2026/02/20/English/"/>
+    <url>/2026/02/20/English/</url>
+    
+    <content type="html"><![CDATA[<p>And there will be hot takes about corpse running.<br>qualitative leap 质的飞跃<br>qualitative leap 突出的<br>whereas 虽然<br>drastic 激烈的<br>toggle 切换<br>undertake<br>traverse<br>intricate and multilayered tasks<br>comprehensive 全面的<br>Curriculum Learning 课程学习<br>sentiment 情感<br>tweak 微调<br>template 模板<br>braces 括号<br>invoke 调用<br>runnables 可运行的<br>coercion 强制转换<br>parallel 并行<br>parsers 解析器<br>recap 回顾<br>You can also use this section to <strong>suppress</strong> warnings generated by your code:<br>tuple 元组<br>inject 注入</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>pyTorch</title>
     <link href="/2026/02/19/pyTorch/"/>
     <url>/2026/02/19/pyTorch/</url>
