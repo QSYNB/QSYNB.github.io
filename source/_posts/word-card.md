@@ -42,3 +42,13 @@ tags:
 | a handy tip | 小窍门，妙招 |
 | a handy tool | 方便好用的工具 |
 | keep a notepad handy | 随身携带记事本 |
+
+| **discern** */dɪˈsɜːn/* | vt. 觉察出，了解；（依稀）分辨出 |
+| :--: | :--: |
+| discern the truth | 了解真相 |
+| discern a difference | 觉察出差别 |
+
+| **devise** */dɪˈvaɪz/* | vt. 想出，发明，设计 |
+| :--: | :--: |
+| devise an experiment | 设计实验 |
+| devise a method | 想出方法 |
