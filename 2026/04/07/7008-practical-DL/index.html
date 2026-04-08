@@ -19,21 +19,21 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="把数组转换为 torch 张量torch.as_tensor()  求解线性方程组torch.linalg.solve()    功能：求解线性方程组 $Ax &#x3D; b$，其中 $A$ 是一个方阵，$x$ 和 $b$ 是向量或矩阵。 参数： A：系数矩阵，形状为 (n, n)。 b：右侧向量或矩阵，形状为 (n,) 或 (n, m)。   返回值： x：解向量或矩阵，形状与 b 相同。">
+    <meta name="description" content="一、 概率与信息论：定义世界的规则  核心统计指标  期望 (Expectation)：代表“平均预测目标”。在深度学习中，我们最小化的损失函数本质上是在最小化误差的期望。 方差 (Variance)：代表“不确定性”或“波动力度”。高方差意味着模型对数据过于敏感，容易产生过拟合。 协方差 (Covariance)：代表变量间的“线性相关性”。通过协方差矩阵，模型可以理解不同输入特征之间是如何相互">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pyTorch">
-<meta property="og:url" content="https://qsynb.github.io/2026/02/19/pyTorch/index.html">
+<meta property="og:title" content="7008 practical DL">
+<meta property="og:url" content="https://qsynb.github.io/2026/04/07/7008-practical-DL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="把数组转换为 torch 张量torch.as_tensor()  求解线性方程组torch.linalg.solve()    功能：求解线性方程组 $Ax &#x3D; b$，其中 $A$ 是一个方阵，$x$ 和 $b$ 是向量或矩阵。 参数： A：系数矩阵，形状为 (n, n)。 b：右侧向量或矩阵，形状为 (n,) 或 (n, m)。   返回值： x：解向量或矩阵，形状与 b 相同。">
+<meta property="og:description" content="一、 概率与信息论：定义世界的规则  核心统计指标  期望 (Expectation)：代表“平均预测目标”。在深度学习中，我们最小化的损失函数本质上是在最小化误差的期望。 方差 (Variance)：代表“不确定性”或“波动力度”。高方差意味着模型对数据过于敏感，容易产生过拟合。 协方差 (Covariance)：代表变量间的“线性相关性”。通过协方差矩阵，模型可以理解不同输入特征之间是如何相互">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-02-19T12:22:48.000Z">
-<meta property="article:modified_time" content="2026-04-08T13:13:14.161Z">
+<meta property="article:published_time" content="2026-04-07T08:26:40.000Z">
+<meta property="article:modified_time" content="2026-04-07T08:29:39.985Z">
 <meta property="article:author" content="秦少言">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>pyTorch - Hexo</title>
+  <title>7008 practical DL - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pyTorch"></span>
+            <span id="subtitle" data-typed-text="7008 practical DL"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-02-19 20:22" pubdate>
-          2026年2月19日 晚上
+        <time datetime="2026-04-07 16:26" pubdate>
+          2026年4月7日 下午
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.2k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -270,75 +270,61 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">pyTorch</h1>
+            <h1 id="seo-header">7008 practical DL</h1>
             
             
               <div class="markdown-body">
                 
-                <ol>
-<li><p>把数组转换为 torch 张量<br>torch.as_tensor()</p>
-</li>
-<li><p>求解线性方程组<br>torch.linalg.solve()</p>
-</li>
+                <p>一、 概率与信息论：定义世界的规则</p>
+<ol>
+<li>核心统计指标</li>
 </ol>
-<ul>
-<li>功能：求解线性方程组 $Ax &#x3D; b$，其中 $A$ 是一个方阵，$x$ 和 $b$ 是向量或矩阵。</li>
-<li>参数：<ul>
-<li><code>A</code>：系数矩阵，形状为 <code>(n, n)</code>。</li>
-<li><code>b</code>：右侧向量或矩阵，形状为 <code>(n,)</code> 或 <code>(n, m)</code>。</li>
-</ul>
-</li>
-<li>返回值：<ul>
-<li><code>x</code>：解向量或矩阵，形状与 <code>b</code> 相同。</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li><p>矩阵转置<br>torch.Tensor.T<br>X.T<br>必须大写</p>
-</li>
-<li><p>矩阵拉平<br>torch.Tensor.flatten()<br>X.flatten()</p>
-</li>
-<li><p>取整<br>torch.round(x, decimals&#x3D;4)</p>
-</li>
-</ol>
-<h3 id="Standardization-和-Min-Max-Normalization"><a href="#Standardization-和-Min-Max-Normalization" class="headerlink" title="Standardization 和 Min-Max Normalization"></a>Standardization 和 Min-Max Normalization</h3><ol>
-<li>目的是什么</li>
-</ol>
-<ul>
-<li><code>standardization</code>（标准化）是把数据变成均值为 0、标准差为 1 的分布。</li>
-<li>它的目的是消除不同特征量纲和数值范围的影响，让模型更容易训练。</li>
-<li><code>min-max normalization</code>（归一化）是把数据缩放到固定区间，最常见是 <code>[0, 1]</code>。</li>
-<li>它的目的是让不同特征落在统一范围内，便于比较，也适合对输入范围敏感的模型。</li>
-</ul>
+<p>期望 (Expectation)：代表“平均预测目标”。在深度学习中，我们最小化的损失函数本质上是在最小化误差的期望。</p>
+<p>方差 (Variance)：代表“不确定性”或“波动力度”。高方差意味着模型对数据过于敏感，容易产生过拟合。</p>
+<p>协方差 (Covariance)：代表变量间的“线性相关性”。通过协方差矩阵，模型可以理解不同输入特征之间是如何相互影响的。</p>
 <ol start="2">
-<li>公式是什么</li>
+<li>常用概率分布：模型的“预设模板”</li>
 </ol>
-<ul>
-<li><code>standardization</code>:<br><code>z = (x - mean) / std</code></li>
-<li><code>min-max normalization</code>:<br><code>x_norm = (x - x_min) / (x_max - x_min)</code></li>
-</ul>
+<p>伯努利 (Bernoulli) &#x2F; 范畴 (Multinoulli) 分布：分类任务的基础。二分类用伯努利，多分类用范畴分布。</p>
+<p>高斯 (Gaussian) 分布：最常用的默认分布。因为“中心极限定理”告诉我们噪声通常是正态的，且它在已知方差时具有“最大熵”（即除了已知信息外，不做多余假设）。</p>
+<p>拉普拉斯 (Laplace) 分布：在均值处非常尖锐。在模型中引入它会产生“稀疏性”，即让不重要的权重趋近于 0（L1 正则化）。</p>
 <ol start="3">
-<li>PyTorch 用到的几个方法是什么</li>
+<li>信息论：衡量“差距”的尺子</li>
 </ol>
-<ul>
-<li><code>torch.mean(x, dim=0)</code>：按列求均值</li>
-<li><code>torch.std(x, dim=0, unbiased=False)</code>：按列求标准差</li>
-<li><code>torch.min(x, dim=0).values</code>：按列求最小值</li>
-<li><code>torch.max(x, dim=0).values</code>：按列求最大值</li>
-<li><code>torch.round(x, decimals=4)</code>：保留 4 位小数</li>
-</ul>
-<ol start="4">
-<li>这两个的 PyTorch 表示</li>
+<p>自信息与熵：衡量一个事件或整个分布的“不确定性”。</p>
+<p>KL 散度 (KL Divergence)：衡量两个分布之间的距离。</p>
+<p>交叉熵 (Cross-Entropy)：深度学习的核心损失函数。最小化它就等同于让模型生成的分布 $Q$ 尽可能逼近真实数据的分布 $P$。</p>
+<p>二、 数值计算：适配硬件的艺术</p>
+<ol>
+<li>硬件的陷阱：溢出</li>
 </ol>
-<ul>
-<li><code>standardization</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">mean = torch.mean(x, dim=<span class="hljs-number">0</span>)<br>std = torch.std(x, dim=<span class="hljs-number">0</span>, unbiased=<span class="hljs-literal">False</span>)<br>standardized = torch.<span class="hljs-built_in">round</span>((x - mean) / std, decimals=<span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><code>min-max normalization</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">x_min = torch.<span class="hljs-built_in">min</span>(x, dim=<span class="hljs-number">0</span>).values<br>x_max = torch.<span class="hljs-built_in">max</span>(x, dim=<span class="hljs-number">0</span>).values<br>normalized = torch.<span class="hljs-built_in">round</span>((x - x_min) / (x_max - x_min), decimals=<span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+<p>下溢 (Underflow)：数字太小被四舍五入为 0，会导致“除以 0”错误。</p>
+<p>上溢 (Overflow)：数字太大变成无穷大，会导致计算出现 NaN（非数值）。</p>
+<p>Softmax 稳定技巧：在计算前减去输入向量中的最大值，这样可以保证指数运算不会爆炸，分母也不会为 0。</p>
+<ol start="2">
+<li>梯度下降 (Gradient Descent)</li>
+</ol>
+<p>逻辑：计算目标函数的梯度（导数），然后朝着反方向走一步。</p>
+<p>学习率：决定每一步跨多大。</p>
+<p>雅可比矩阵 (Jacobian)：一阶导数矩阵，用于多维空间的梯度计算。</p>
+<ol start="3">
+<li>为什么不用牛顿法？</li>
+</ol>
+<p>鞍点问题：深度学习的地形中充满了“鞍点”（一个方向下坡，一个方向上坡）。牛顿法这种二阶优化算法会主动跳进鞍点并卡住，而简单的梯度下降通常能绕过去。</p>
+<p>海森矩阵 (Hessian)：二阶导数矩阵，代表地形的曲率。计算量巨大，在深度网络中不实用。</p>
+<p>三、 正则化：带枷锁的舞蹈</p>
+<ol>
+<li>约束优化 (KKT 条件)</li>
+</ol>
+<p>本质：正则化本质上是在一个“限制范围”内寻找最优解。</p>
+<p>拉格朗日乘子 ($\lambda$)：它就是代码里的 weight_decay 系数。它在“预测准确度”和“权重大小”之间寻找平衡。</p>
+<p>权重的“拉回”机制：当权重为了拟合数据而变得过大（跑得太远）时，正则项会像橡皮筋一样把它拉回 0 附近，从而防止过拟合。</p>
+<p>四、 深度学习引擎的工作流</p>
+<p>定义世界 (概率)：将预测结果设为概率分布。</p>
+<p>衡量误差 (信息论)：用交叉熵计算模型离真相有多远。</p>
+<p>计算路径 (数值数学)：在保证硬件不溢出的前提下计算梯度。</p>
+<p>更新系统 (优化)：根据梯度调整权重，循环往复。</p>
+<p>整理人：Gemini (基于 Goodfellow《Deep Learning》Ch3-4 讲义)</p>
 
                 
               </div>
@@ -356,8 +342,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pyTorch</div>
-      <div>https://qsynb.github.io/2026/02/19/pyTorch/</div>
+      <div>7008 practical DL</div>
+      <div>https://qsynb.github.io/2026/04/07/7008-practical-DL/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +355,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年2月19日</div>
+          <div>2026年4月7日</div>
         </div>
       
       
@@ -401,18 +387,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/02/20/English/" title="English">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">English</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/02/03/podcast-video-pipeline/" title="Video Podcast Edit pipeline">
-                        <span class="hidden-mobile">Video Podcast Edit pipeline</span>
+                      <a href="/2026/04/04/7008-Practical-Deep-Learning-L1/" title="7008 Practical Deep Learning L1">
+                        <span class="hidden-mobile">7008 Practical Deep Learning L1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

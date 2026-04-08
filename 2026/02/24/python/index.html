@@ -27,7 +27,7 @@
 <meta property="og:description" content="123456def fake_bin(x):    # 一行搞定：遍历 x，如果是 &lt;5 就给 &#x27;0&#x27;，否则给 &#x27;1&#x27;    # .join() 把列表里的元素用 &#x27;&#x27; 连接起来    # 单引号或者双引号都可以    return &quot;&quot;.join([&quot;0&quot; if int(d) &lt; 5">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-02-24T03:22:46.000Z">
-<meta property="article:modified_time" content="2026-04-01T13:05:50.427Z">
+<meta property="article:modified_time" content="2026-04-08T12:49:38.520Z">
 <meta property="article:author" content="秦少言">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.7k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          22 分钟
+          23 分钟
         
       </span>
     
@@ -296,7 +296,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_alternating_case</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">return</span> string.swapcase()<br>    <span class="hljs-comment">### .swapcase() 把字符串里的大写字母变成小写字母，小写字母变成大写字母</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">stray</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(<span class="hljs-built_in">set</span>(arr), key=arr.count)<br>    <span class="hljs-comment">### .count() 统计元素在列表里的出现次数</span><br>    <span class="hljs-comment">### .set() 把列表里的重复元素去掉</span><br>    <span class="hljs-comment">### key=arr.count 按出现次数最少的元素排序</span><br></code></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-comment"># 先补一个下划线，防止末尾落单</span><br>    s += <span class="hljs-string">&quot;_&quot;</span><br>    <span class="hljs-comment"># 从 0 开始，每隔 2 个取一段，长度为 2</span><br>    <span class="hljs-comment"># range 里的 len(s)-1 是为了防止偶数长度时多出一个 &quot;__&quot;</span><br>    <span class="hljs-keyword">return</span> [s[i:i+<span class="hljs-number">2</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s)-<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)]<br></code></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pig_it</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-comment"># 1. text.split()：拆成单词列表</span><br>    <span class="hljs-comment"># 2. x[1:] + x[0] + &#x27;ay&#x27;：切片组合（去掉首字母的后面部分 + 首字母 + ay）</span><br>    <span class="hljs-comment"># 3. if x.isalpha()：过滤器，确保只有字母才变，标点符号不动</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(x[<span class="hljs-number">1</span>:] + x[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;ay&#x27;</span> <span class="hljs-keyword">if</span> x.isalpha() <span class="hljs-keyword">else</span> x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> text.split())<br></code></pre></td></tr></table></figure>
                 
               </div>
             
