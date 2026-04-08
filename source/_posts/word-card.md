@@ -52,3 +52,45 @@ tags:
 | :--: | :--: |
 | devise an experiment | 设计实验 |
 | devise a method | 想出方法 |
+
+| **spasm** */ˈspæzəm/* | n. 痉挛；（不愉快情感的）迸发 |
+| :--: | :--: |
+| a muscle spasm | 肌肉痉挛 |
+| a neck spasm | 脖子抽筋 |
+| go into spasm | 开始痉挛 |
+| a spasm of fear | 一阵恐惧 |
+
+| **trivial** */ˈtrɪviəl/* | adj. 琐碎的，微不足道的 |
+| :--: | :--: |
+| a trivial matter | 小事 |
+| a trivial detail | 细枝末节 |
+| a trivial sum of money | 小钱 |
+
+| **obscure** */əbˈskjʊə(r)/* | adj. 鲜为人知的；难以理解的<br>vt. 掩盖，使模糊，使隐晦 |
+| :--: | :--: |
+| an obscure place | 鲜为人知的地方 |
+| an obscure word | 晦涩难懂的词汇 |
+| obscure the truth | 掩盖真相 |
+
+| **ignorance** */ˈɪɡnərəns/* | n. 无知，愚昧 |
+| :--: | :--: |
+| excuse my ignorance | 原谅我的无知 |
+| be kept in ignorance | 被蒙在鼓里 |
+| ignorance of/about sth | 对……的无知（或不了解） |
+
+| **obligation** */ˌɒblɪˈɡeɪʃn/* | n. 义务，责任 |
+| :--: | :--: |
+| a moral obligation | 道德义务 |
+| meet an obligation | 履行义务 |
+| a legal obligation | 法律义务 |
+| an obligation to do | 对……的义务，做……的责任 |
+
+| **apt** */æpt/* | adj. 有……倾向的；恰当的；聪明的 |
+| :--: | :--: |
+| suitable / proper / appropriate / fitting / apt | adj. 恰当的 |
+
+| **forth** */fɔːθ/* | adv. （从某时）往前，（从某处）向外 |
+| :--: | :--: |
+| step forth | 向前一步 |
+| move back and forth | 来回移动 |
+| and so forth | 等等，诸如此类 |

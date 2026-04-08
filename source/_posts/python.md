@@ -128,3 +128,10 @@ def solution(s):
     # range 里的 len(s)-1 是为了防止偶数长度时多出一个 "__"
     return [s[i:i+2] for i in range(0, len(s)-1, 2)]
 ```
+```python
+def pig_it(text):
+    # 1. text.split()：拆成单词列表
+    # 2. x[1:] + x[0] + 'ay'：切片组合（去掉首字母的后面部分 + 首字母 + ay）
+    # 3. if x.isalpha()：过滤器，确保只有字母才变，标点符号不动
+    return " ".join(x[1:] + x[0] + 'ay' if x.isalpha() else x for x in text.split())
+```

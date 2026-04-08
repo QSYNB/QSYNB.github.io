@@ -27,3 +27,41 @@ X.flatten()
 
 5. 取整
 torch.round(x, decimals=4)
+
+### Standardization 和 Min-Max Normalization
+
+1. 目的是什么
+- `standardization`（标准化）是把数据变成均值为 0、标准差为 1 的分布。
+- 它的目的是消除不同特征量纲和数值范围的影响，让模型更容易训练。
+- `min-max normalization`（归一化）是把数据缩放到固定区间，最常见是 `[0, 1]`。
+- 它的目的是让不同特征落在统一范围内，便于比较，也适合对输入范围敏感的模型。
+
+2. 公式是什么
+- `standardization`:
+  `z = (x - mean) / std`
+- `min-max normalization`:
+  `x_norm = (x - x_min) / (x_max - x_min)`
+
+3. PyTorch 用到的几个方法是什么
+- `torch.mean(x, dim=0)`：按列求均值
+- `torch.std(x, dim=0, unbiased=False)`：按列求标准差
+- `torch.min(x, dim=0).values`：按列求最小值
+- `torch.max(x, dim=0).values`：按列求最大值
+- `torch.round(x, decimals=4)`：保留 4 位小数
+
+4. 这两个的 PyTorch 表示
+- `standardization`
+
+```python
+mean = torch.mean(x, dim=0)
+std = torch.std(x, dim=0, unbiased=False)
+standardized = torch.round((x - mean) / std, decimals=4)
+```
+
+- `min-max normalization`
+
+```python
+x_min = torch.min(x, dim=0).values
+x_max = torch.max(x, dim=0).values
+normalized = torch.round((x - x_min) / (x_max - x_min), decimals=4)
+```
