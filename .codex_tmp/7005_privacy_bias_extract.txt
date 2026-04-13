@@ -1,0 +1,436 @@
+PAGES=39
+
+--- PAGE 1 ---
+
+ETHICAL CRITERIA SUITE: 
+PRIV ACY AND 
+ALGORITHMIC BIAS
+WQF7005
+WEEK 5
+
+--- PAGE 2 ---
+
+Agenda
+1. Introduction to Ethical Privacy
+2. Key Drivers and Inhibitors of  Privacy
+3. Certification Requirements for Privacy
+4. Introduction to Algorithmic Bias
+5. Drivers, Inhibitors, and EFRs for Bias
+22
+
+--- PAGE 3 ---
+
+Learning Outcome
+1. Define ethical privacy and algorithmic bias in the context of  AI.
+2. Describe the core drivers and inhibitors of  both criteria.
+3. Interpret IEEE Ethical Foundational Requirements (EFRs) related to privacy 
+and bias.
+4. Evaluate a real-world AI case using ethical privacy and bias lenses.
+
+--- PAGE 4 ---
+
+PART 1: PRIV ACY
+4
+
+--- PAGE 5 ---
+
+What is Ethical Privacy?
+ Ethical privacy is the principle of  protecting individuals' personal 
+autonomy , dignity , and data-related rights in the design, deployment, and 
+governance of  AI systems.
+ It goes beyond legal compliance (e.g. GDPR or PDPA) by emphasizing 
+the values of  respect, fairness, and human-centric decision-making.
+ In AI, privacy means ensuring that data use does not exploit, manipulate, 
+or harm users.
+
+--- PAGE 6 ---
+
+Dimensions of  
+Ethical Privacy
+6
+Informational Privacy: Control over personal data 
+and its disclosure.
+Decisional Privacy: Freedom from AI inference in 
+private decision-making (e.g. reproductive rights, 
+health).
+Locational Privacy: Control over geographical 
+tracking (e.g. GPS apps).
+Associational Privacy: Right to keep social 
+connections private.
+Psychological Privacy: Protection from manipulation 
+through behavior prediction (e.g. emotion 
+recognition).
+
+--- PAGE 7 ---
+
+Why Privacy Matters in AI?
+ AI systems often operate on sensitive personal data —  including 
+behavior, health, movement, and preferences.
+ Misuse of  such data leads to trust erosion, discrimination, surveillance, 
+or emotional harm.
+ AIS can make inferences beyond human capability , amplifying risks.
+ Ethical privacy is critical to protect individuals in high-risk domains 
+(healthcare, education, social welfare).
+7
+
+--- PAGE 8 ---
+
+Key 
+Stakeholders 
+for Ethical 
+Privacy
+8
+Developer (D) – Builds the AIS and owns 
+ethical design.
+Integrator (I) – Combines AIS components 
+into a system.
+Operator (O) – Runs the AIS in real-world 
+settings.
+Maintainer (M) – Monitors and updates the 
+system.
+Regulator (R) – Enforces compliance and 
+certification.
+
+--- PAGE 9 ---
+
+Ethical Privacy 
+Drivers
+9
+Organizational governance & maturity
+Clarity & consistency of  AIS operation
+Ethical design and development
+Human oversight and enforcement
+End-user awareness & empowerment
+Maintaining privacy integrity
+Responsible decommissioning
+
+--- PAGE 10 ---
+
+Organizational Governance & Maturity
+ Clear roles, responsibilities, and internal accountability structure.
+ Privacy integrated into risk management and organizational 
+strategy .
+ Participation in ethical standards initiatives (e.g., IEEE, ISO).
+ Demonstrated maturity through documented processes and 
+training.
+10
+
+--- PAGE 11 ---
+
+Clarity of  AIS Operations
+ Ensure system capabilities and limits are understandable to all 
+stakeholders.
+ Communicate functions using diagrams, interfaces, and natural 
+language.
+ Allow both technical and non-technical users to trace system 
+behavior.
+ Define and document the AIS operation lifecycle (input, process, 
+output).
+11
+
+--- PAGE 12 ---
+
+Ethical Architecture & Design
+ Embed privacy and ethics from system conception (privacy-by-
+design).
+ Include peer reviews and multi-disciplinary input during 
+development.
+ Conduct ethical impact assessments at each phase of  deployment.
+ Address foreseeable risks to user dignity , autonomy , and expectations.
+12
+
+--- PAGE 13 ---
+
+Human Oversight
+ Assign oversight roles to monitor, control, and intervene in AIS 
+behavior.
+ Create redress pathways for users to challenge outcomes.
+ Establish monitoring dashboards and decision logs.
+ Provide continuous training to oversight teams on ethical 
+privacy .
+13
+
+--- PAGE 14 ---
+
+End-User Empowerment
+ Explain how data is used and allow users to opt in/out.
+ Provide user manuals or explainable AI interfaces.
+ Tailor communication to user profiles (e.g., layperson vs 
+expert).
+ Offer consent and control mechanisms throughout the lifecycle.
+14
+
+--- PAGE 15 ---
+
+Maintaining Ethical Privacy Integrity
+ Update systems to remain privacy-aligned through changes or 
+upgrades.
+ Monitor internal/external shifts that may create privacy risks.
+ Apply policies for stakeholder consultation and ongoing 
+validation.
+ Keep audit trails and maintain a privacy risk register.
+15
+
+--- PAGE 16 ---
+
+Responsible Decommissioning
+ Plan for secure disposal of  personal data, models, and 
+documentation.
+ Anonymize or delete user-linked data post-lifecycle.
+ Communicate shutdown timelines and impacts to stakeholders.
+ Evaluate system impacts retrospectively for learning and closure.
+16
+
+--- PAGE 17 ---
+
+Inhibitors of  
+Ethical Privacy 
+Drivers
+17
+Overreaching & Overfitting
+Authoritarian and compulsory pressures
+Accidental/incidental exposure
+Malicious exposure
+Systemic vulnerability
+
+--- PAGE 18 ---
+
+Overreaching & Overfitting
+ Collecting data beyond what is needed for system functionality .
+ Deriving inferences from user data without consent (e.g., 
+emotional states, health predictions).
+ Violates the principle of  data minimization.
+ May create distrust as users feel overly monitored or profiled.
+18
+
+--- PAGE 19 ---
+
+Authoritarian Pressure
+ Legal or political coercion forcing AIS operators to share private 
+user data.
+ Often lacks user consent and violates ethical boundaries.
+ Examples: Law enforcement requests without judicial 
+oversight; surveillance regimes.
+ Compromises autonomy and user trust in digital systems.
+19
+
+--- PAGE 20 ---
+
+Accidental/Incidental Exposure
+ Privacy breach resulting from internal mishandling of  data.
+ Includes poor anonymization, misconfigured permissions, or 
+email misrouting.
+ Usually caused by human error or lack of  training.
+ Undermines system integrity and public trust.
+20
+
+--- PAGE 21 ---
+
+Malicious Exposure
+ Deliberate misuse of  data by insiders or external hackers.
+ Examples: Data theft, ransomware, unauthorized leaks.
+ Requires proactive security measures, encryption, and access 
+control.
+ Raises concern over system resilience and breach response 
+protocols.
+21
+
+--- PAGE 22 ---
+
+Systemic Vulnerability
+ Technical or design flaws embedded in the system architecture.
+ Transfer learning or model reuse introduces hidden privacy risks.
+ These vulnerabilities can persist unnoticed for long periods.
+ Requires ongoing audits, red teaming, and vulnerability 
+patching.
+22
+
+--- PAGE 23 ---
+
+IEEE Ethical Privacy Certification – EFRs
+ Ethical privacy is measured using Ethical Foundational Requirements 
+(EFRs).
+ Each goal has associated EFRs and required evidence.
+ Certification considers:
+ Governance structure
+ Communication transparency
+ Risk mitigation plans
+ Decommissioning strategy
+ Scoring: 1 (Does not meet) to 5 (Excels); 3 is the typical pass mark.
+23
+
+--- PAGE 24 ---
+
+PART 2: 
+ALGORITHMIC BIAS
+24
+
+--- PAGE 25 ---
+
+What is Algorithmic Bias?
+ Systematic and repeatable errors in an AI system that lead to unfair 
+outcomes.
+ Occurs when decisions made by an algorithm disadvantage one group 
+over another.
+ Can stem from biased data, flawed assumptions, or lack of  oversight.
+ Examples: biased hiring algorithms, facial recognition systems with 
+higher error rates for minorities.
+25
+
+--- PAGE 26 ---
+
+Why Algorithmic Bias Matters?
+ Reinforces existing social inequalities.
+ Leads to loss of  trust in AI systems.
+ Can result in real-world harm: denial of  services, false arrests, 
+unfair treatment.
+ Ethical AI must ensure that models are fair, inclusive, and 
+accountable.
+26
+
+--- PAGE 27 ---
+
+Stakeholders Affected by Algorithmic Bias
+27
+End-users (who 
+experience decisions)
+Developers and data 
+scientists
+Organizations deploying 
+AI systems
+Impacted communities 
+(e.g., minorities, 
+women, 
+underrepresented 
+groups)
+Regulators and 
+policymakers
+
+--- PAGE 28 ---
+
+IEEE Drivers of  
+Ethical Bias 
+Mitigation
+28
+Organizational Governance, Capability , and Maturity
+Clarity of  AIS Operations
+Appropriate Context Alignment
+Justified Use of  Protected Characteristics
+System Behavior Monitoring
+Maintaining Acceptable Bias Profile
+
+--- PAGE 29 ---
+
+Organizational Governance, Capability , and 
+Maturity
+ Demonstrate the organization’s ethical maturity and intent.
+ Documented governance frameworks and bias accountability 
+roles.
+ Regular bias training and resource allocation to mitigate risks.
+ Participation in external audits and ethical AI initiatives.
+29
+
+--- PAGE 30 ---
+
+Clarity of  AIS Operations
+ Provide clearly defined goals, scope, and intended use of  the 
+AIS.
+ Document system pipeline, assumptions, and methods.
+ Ensure performance expectations and bias risks are 
+communicated.
+ Transparency on how system outputs are derived.
+30
+
+--- PAGE 31 ---
+
+Appropriate Context Alignment
+ Avoid deploying systems in new domains without context-
+specific adjustments.
+ Engage stakeholders for local feedback and tuning.
+ Document and test system performance under new conditions.
+ Address cultural, legal, and socio-economic relevance.
+31
+
+--- PAGE 32 ---
+
+Justified Use of  Protected Characteristics
+ Clearly identify which protected attributes are used (e.g., 
+gender, race).
+ Justify necessity for inclusion (e.g., clinical or fairness purposes).
+ Demonstrate alternatives considered and why they were not 
+adopted.
+ Explain how use of  attributes mitigates, rather than reinforces, 
+bias.
+32
+
+--- PAGE 33 ---
+
+System Behavior Monitoring
+ Implement full lifecycle monitoring: design, test, deployment, 
+update.
+ Establish real-time alerts and intervention triggers.
+ Ensure accountability chains and documentation are in place.
+ Conduct continuous benchmarking and fairness audits.
+33
+
+--- PAGE 34 ---
+
+Maintaining Acceptable Bias Profile
+ Staff  should be trained to recognize and respond to emerging 
+bias.
+ Clear escalation plans and thresholds for mitigation.
+ Risk assessment must consider the impact of  bias over time.
+ Maintain consistency of  fairness outcomes across all 
+operational contexts.
+34
+
+--- PAGE 35 ---
+
+Inhibitors of  
+Ethical Bias 
+Drivers
+35
+Lack of  Process 
+Transparency
+
+--- PAGE 36 ---
+
+Inhibitor: Lack of  Process Transparency
+ Ethical mitigation is impossible without transparency .
+ This includes clarity in data sources, feature selection, and 
+decision rules.
+ Organizations must:
+ Avoid secrecy and opaque IP claims.
+ Allow auditability and public scrutiny .
+ Maintain clear, accessible bias performance indicators.
+36
+
+--- PAGE 37 ---
+
+Bias Certification Criteria (IEEE EFR Summary)
+• Based on evidence across 6 driver goals and the one major 
+inhibitor.
+• Certification requires:
+• Documented fairness assessments and bias strategies.
+• Evaluation of  protected attribute justification.
+• Continuous monitoring protocols and escalation plans.
+• Clear process transparency and stakeholder engagement.
+37
+
+--- PAGE 38 ---
+
+Interplay Between Privacy and Bias
+ Personalization can increase fairness but threatens data 
+minimization.
+ Preventing bias may require demographic data—conflicting with 
+privacy laws.
+ Ethical design needs:
+ Consent and transparency
+ Proportionality and necessity assessment
+ Strong oversight and explainability measures
+38
+
+--- PAGE 39 ---
+
+Thank You
+39

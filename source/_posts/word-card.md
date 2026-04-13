@@ -94,3 +94,20 @@ tags:
 | step forth | 向前一步 |
 | move back and forth | 来回移动 |
 | and so forth | 等等，诸如此类 |
+
+| **humanity** */hjuːˈmænəti/* | n. 人类；人性；人道；人文学科 |
+| :--: | :--: |
+| a crime against humanity | 反人类的罪行 |
+| the worst in humanity | 人性最丑恶的一面 |
+| study humanities | 学习文科 |
+
+| **boast** */bəʊst/* | vi. vt. 自吹自擂，自夸<br>vt. 有（值得自豪的事物）<br>n. 自吹自擂，自夸 |
+| :--: | :--: |
+| boast rich land | 拥有肥沃土壤 |
+| boast about/of sth | 自吹自擂，自夸 |
+
+| **hostile** */ˈhɒstaɪl/* | adj. 敌意的；反对的；（条件）不利的 |
+| :--: | :--: |
+| a hostile attitude | 有敌意的态度 |
+| a hostile environment | 恶劣的环境 |
+| be hostile to | 对……有敌意的 |
