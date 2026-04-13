@@ -27,7 +27,7 @@
 <meta property="og:description" content="Lab 4: Understanding your dataset5. 代码流程拆解5.1 读取数据1234import pandas as pddf &#x3D; pd.read_csv(path)df.head()  作用：  pd.read_csv(path)：读取 CSV df.head()：先快速看前 5 行，确认字段和数据长相  这是最常见的第一步，因为你需要先知道：  列名是否正确 数据是否成">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-04-04T07:58:38.000Z">
-<meta property="article:modified_time" content="2026-04-04T08:25:43.699Z">
+<meta property="article:modified_time" content="2026-04-11T09:15:46.465Z">
 <meta property="article:author" content="秦少言">
 <meta property="article:tag" content="Data Analysis">
 <meta property="article:tag" content="EDA">
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          14k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          24 分钟
+          116 分钟
         
       </span>
     
@@ -459,6 +459,74 @@
 <li>看业务背景</li>
 <li>看你到底想解释什么</li>
 </ul>
+<h1 id="WQF7005-课程笔记：隐私与算法偏见"><a href="#WQF7005-课程笔记：隐私与算法偏见" class="headerlink" title="WQF7005 课程笔记：隐私与算法偏见"></a>WQF7005 课程笔记：隐私与算法偏见</h1><h2 id="一、课程概述-Agenda"><a href="#一、课程概述-Agenda" class="headerlink" title="一、课程概述 (Agenda)"></a>一、课程概述 (Agenda)</h2><p>本节课主要探讨在 AI 语境下如何定义、管理并评估隐私与算法偏见，重点关注以下内容：</p>
+<ul>
+<li>伦理隐私 (Ethical Privacy) 的定义与维度。</li>
+<li>驱动因素 (Drivers) 与抑制因素 (Inhibitors)。</li>
+<li>IEEE 伦理基础要求 (Ethical Foundational Requirements, EFRs) 的认证标准。</li>
+<li>算法偏见 (Algorithmic Bias) 的成因及其缓解措施。</li>
+</ul>
+<hr>
+<h2 id="二、伦理隐私-Ethical-Privacy"><a href="#二、伦理隐私-Ethical-Privacy" class="headerlink" title="二、伦理隐私 (Ethical Privacy)"></a>二、伦理隐私 (Ethical Privacy)</h2><h3 id="1-定义与核心理念"><a href="#1-定义与核心理念" class="headerlink" title="1. 定义与核心理念"></a>1. 定义与核心理念</h3><ul>
+<li>定义：指在 AI 系统的设计、部署和治理中，保护个人的自主权 (Personal Autonomy)、尊严 (Dignity) 和数据相关权利。</li>
+<li>超越合规：它不仅是遵守法律（如 GDPR），更强调以人为本 (Human-centric) 的决策，确保数据使用不会剥削或操纵用户。</li>
+</ul>
+<h3 id="2-五大维度-Dimensions"><a href="#2-五大维度-Dimensions" class="headerlink" title="2. 五大维度 (Dimensions)"></a>2. 五大维度 (Dimensions)</h3><ul>
+<li>信息隐私 (Informational Privacy)：对个人数据及其披露的控制。</li>
+<li>决策隐私 (Decisional Privacy)：不受 AI 推断干预个人私密决策，如医疗、生育权等。</li>
+<li>位置隐私 (Locational Privacy)：对地理位置追踪的控制。</li>
+<li>关联隐私 (Associational Privacy)：保持社交关系私密性的权利。</li>
+<li>心理隐私 (Psychological Privacy)：保护个体免受行为预测，如情绪识别带来的操纵。</li>
+</ul>
+<h3 id="3-关键利益相关者-Key-Stakeholders"><a href="#3-关键利益相关者-Key-Stakeholders" class="headerlink" title="3. 关键利益相关者 (Key Stakeholders)"></a>3. 关键利益相关者 (Key Stakeholders)</h3><ul>
+<li>开发人员 (Developer, D)：构建系统并负责伦理设计。</li>
+<li>集成商 (Integrator, I)：整合组件。</li>
+<li>操作员 (Operator, O)：在真实环境中运行系统。</li>
+<li>维护人员 (Maintainer, M)：监控并更新系统。</li>
+<li>监管机构 (Regulator, R)：强制执行合规与认证。</li>
+</ul>
+<hr>
+<h2 id="三、隐私的驱动因素与抑制因素"><a href="#三、隐私的驱动因素与抑制因素" class="headerlink" title="三、隐私的驱动因素与抑制因素"></a>三、隐私的驱动因素与抑制因素</h2><h3 id="1-正向驱动因素-Ethical-Privacy-Drivers"><a href="#1-正向驱动因素-Ethical-Privacy-Drivers" class="headerlink" title="1. 正向驱动因素 (Ethical Privacy Drivers)"></a>1. 正向驱动因素 (Ethical Privacy Drivers)</h3><ul>
+<li>组织治理与成熟度 (Organizational Governance &amp; Maturity)：明确问责结构，将隐私纳入风险管理。</li>
+<li>系统运行清晰度 (Clarity of AIS Operations)：确保技术和非技术用户都能追踪系统行为。</li>
+<li>伦理架构与设计 (Ethical Architecture &amp; Design)：践行隐私设计 (Privacy-by-design)，在构思阶段就嵌入伦理。</li>
+<li>人类监督 (Human Oversight)：设立监督角色，并为用户提供救济途径 (Redress Pathways)。</li>
+<li>最终用户赋权 (End-user Empowerment)：解释数据用途，允许用户选择加入&#x2F;退出 (Opt in&#x2F;out)。</li>
+<li>隐私完整性维护 (Maintaining Privacy Integrity)：在系统升级过程中确保持续对齐隐私标准。</li>
+<li>负责任的退役 (Responsible Decommissioning)：计划安全销毁数据和模型，进行匿名化 (Anonymize) 处理。</li>
+</ul>
+<h3 id="2-负面抑制因素-Inhibitors"><a href="#2-负面抑制因素-Inhibitors" class="headerlink" title="2. 负面抑制因素 (Inhibitors)"></a>2. 负面抑制因素 (Inhibitors)</h3><ul>
+<li>过度扩张与过度拟合 (Overreaching &amp; Overfitting)：收集超出功能需求的数据，违反数据最小化 (Data Minimization) 原则。</li>
+<li>威权压力 (Authoritarian Pressure)：缺乏司法监督的强制性数据共享。</li>
+<li>偶然暴露 (Accidental&#x2F;Incidental Exposure)：由于人为错误或配置不当导致的内部泄露。</li>
+<li>恶意暴露 (Malicious Exposure)：如黑客攻击、勒索软件。</li>
+<li>系统性漏洞 (Systemic Vulnerability)：架构中的设计缺陷或模型重用带来的风险。</li>
+</ul>
+<hr>
+<h2 id="四、算法偏见-Algorithmic-Bias"><a href="#四、算法偏见-Algorithmic-Bias" class="headerlink" title="四、算法偏见 (Algorithmic Bias)"></a>四、算法偏见 (Algorithmic Bias)</h2><h3 id="1-定义与影响"><a href="#1-定义与影响" class="headerlink" title="1. 定义与影响"></a>1. 定义与影响</h3><ul>
+<li>定义：指 AI 系统中导致不公平结果的系统性且可重复的错误 (Systematic and Repeatable Errors)。</li>
+<li>成因：可能源于偏见数据、错误假设或缺乏监督。</li>
+<li>后果：会强化社会不平等，导致服务被拒 (Denial of Services) 或不公平对待 (Unfair Treatment) 等现实伤害。</li>
+</ul>
+<h3 id="2-偏见缓解的驱动因素"><a href="#2-偏见缓解的驱动因素" class="headerlink" title="2. 偏见缓解的驱动因素"></a>2. 偏见缓解的驱动因素</h3><ul>
+<li>适当的环境对齐 (Appropriate Context Alignment)：在不同领域部署时，根据当地文化和法律进行调整。</li>
+<li>受保护特征的正当使用 (Justified Use of Protected Characteristics)：明确并证明使用性别、种族等敏感属性的必要性。</li>
+<li>系统行为监控 (System Behavior Monitoring)：进行全生命周期的公平性审核 (Fairness Audits)。</li>
+<li>维持可接受的偏见特征 (Maintaining Acceptable Bias Profile)：培训员工识别新兴偏见。</li>
+</ul>
+<h3 id="3-主要抑制因素"><a href="#3-主要抑制因素" class="headerlink" title="3. 主要抑制因素"></a>3. 主要抑制因素</h3><ul>
+<li>缺乏流程透明度 (Lack of Process Transparency)：如果数据源、特征选择和决策规则不透明，就无法有效缓解偏见。</li>
+</ul>
+<hr>
+<h2 id="五、IEEE-认证与综合总结"><a href="#五、IEEE-认证与综合总结" class="headerlink" title="五、IEEE 认证与综合总结"></a>五、IEEE 认证与综合总结</h2><h3 id="1-IEEE-认证要求-EFR-Summary"><a href="#1-IEEE-认证要求-EFR-Summary" class="headerlink" title="1. IEEE 认证要求 (EFR Summary)"></a>1. IEEE 认证要求 (EFR Summary)</h3><ul>
+<li>基于 6 个驱动目标和 1 个主要抑制因素进行衡量。</li>
+<li>评分标准：1（不达标）到 5（卓越），3 分为及格线。</li>
+<li>核心要求：记录公平性评估、风险减轻计划、退役策略及透明沟通。</li>
+</ul>
+<h3 id="2-隐私与偏见的相互作用-Interplay"><a href="#2-隐私与偏见的相互作用-Interplay" class="headerlink" title="2. 隐私与偏见的相互作用 (Interplay)"></a>2. 隐私与偏见的相互作用 (Interplay)</h3><ul>
+<li>冲突点：追求个性化以增加公平性，可能威胁数据最小化原则；为了防止偏见，有时又需要收集受隐私法保护的敏感人口统计数据。</li>
+<li>解决方案：通过比例性 (Proportionality) 评估、强有力的监督以及可解释性 (Explainability) 措施来进行伦理设计。</li>
+</ul>
 <h3 id="7-3-发现数据问题的能力"><a href="#7-3-发现数据问题的能力" class="headerlink" title="7.3 发现数据问题的能力"></a>7.3 发现数据问题的能力</h3><p>例如：</p>
 <ul>
 <li><code>Salary</code> 看起来像数字，其实是字符串</li>
@@ -498,6 +566,387 @@
 <p>分析时这两者意义完全不同。</p>
 <hr>
 <h2 id="10-一句话总结"><a href="#10-一句话总结" class="headerlink" title="10. 一句话总结"></a>10. 一句话总结</h2><p>这个 lab 是一个很典型的 <strong>数据理解 + pandas 基础操作</strong> 练习。<br>重点不是“做复杂分析”，而是学会在真正分析之前，先用 <code>head()</code>、<code>info()</code>、条件筛选、缺失值检查和类型转换，把数据看明白。</p>
+<h1 id="WEEK-5"><a href="#WEEK-5" class="headerlink" title="WEEK 5"></a>WEEK 5</h1><h1 id="7004-课堂笔记：Data-Preprocessing-1"><a href="#7004-课堂笔记：Data-Preprocessing-1" class="headerlink" title="7004 课堂笔记：Data Preprocessing 1"></a>7004 课堂笔记：Data Preprocessing 1</h1><h2 id="一、这节课在做什么"><a href="#一、这节课在做什么" class="headerlink" title="一、这节课在做什么"></a>一、这节课在做什么</h2><p>这份 notebook 讲的是一个完整的数据科学流程，但这节课真正的重点放在数据预处理。</p>
+<p>整体流程是：</p>
+<ol>
+<li>定义问题：能不能根据现有特征预测 <code>Salary</code></li>
+<li>读取数据：用 <code>pandas.read_csv()</code> 导入工资调查数据</li>
+<li>数据预处理：重命名列、处理缺失值、清理异常值、统一币种</li>
+<li>EDA：先看分布，再看变量关系</li>
+<li>建模：用线性回归做一个基础预测模型</li>
+</ol>
+<p>一句话总结：</p>
+<p>这节课不是在追求最强模型，而是在学“如何把原始脏数据整理成可分析、可建模的数据”。</p>
+<hr>
+<h2 id="二、课堂核心思路"><a href="#二、课堂核心思路" class="headerlink" title="二、课堂核心思路"></a>二、课堂核心思路</h2><h3 id="1-先明确目标，再决定清洗方式"><a href="#1-先明确目标，再决定清洗方式" class="headerlink" title="1. 先明确目标，再决定清洗方式"></a>1. 先明确目标，再决定清洗方式</h3><p>课上的问题是：</p>
+<p><code>Can we predict salary based on available features in the dataset?</code></p>
+<p>所以后面的所有预处理，都是围绕这个目标服务：</p>
+<ul>
+<li>哪些列对预测工资有帮助，就尽量保留</li>
+<li>哪些列是噪音、自由文本、缺失太严重，就删掉或简化</li>
+<li>哪些列原本不能直接进模型，就转换成数值或编码形式</li>
+</ul>
+<h3 id="2-数据预处理不是“统一一个方法”，而是“按列处理”"><a href="#2-数据预处理不是“统一一个方法”，而是“按列处理”" class="headerlink" title="2. 数据预处理不是“统一一个方法”，而是“按列处理”"></a>2. 数据预处理不是“统一一个方法”，而是“按列处理”</h3><p>这节课很强调一件事：</p>
+<p>不同类型的列，清洗方法不同。</p>
+<ul>
+<li>标识列：直接删</li>
+<li>自由文本列：通常删</li>
+<li>类别列：填众数或填 <code>Unknown</code></li>
+<li>数值列：填中位数、处理异常值</li>
+<li>区间文本列：转成数值中点</li>
+<li>币种列：统一汇率换算</li>
+</ul>
+<p>也就是说，预处理的核心不是死记函数，而是先判断“这列是什么数据、要拿来干什么”。</p>
+<hr>
+<h2 id="三、这节课的预处理流程"><a href="#三、这节课的预处理流程" class="headerlink" title="三、这节课的预处理流程"></a>三、这节课的预处理流程</h2><h3 id="Step-1-重命名列名"><a href="#Step-1-重命名列名" class="headerlink" title="Step 1. 重命名列名"></a>Step 1. 重命名列名</h3><p>原始调查数据列名很长，不方便操作，所以先用 <code>df.rename(columns={...})</code> 统一改成简洁名字，比如：</p>
+<ul>
+<li><code>How old are you?</code> -&gt; <code>Age</code></li>
+<li><code>What industry do you work in?</code> -&gt; <code>Industry</code></li>
+<li>长工资问题 -&gt; <code>Salary</code></li>
+<li>额外补偿 -&gt; <code>Compensation</code></li>
+</ul>
+<p>这样做的目的：</p>
+<ul>
+<li>代码更清楚</li>
+<li>后面选列更方便</li>
+<li>减少输入错误</li>
+</ul>
+<h3 id="Step-2-检查数据结构"><a href="#Step-2-检查数据结构" class="headerlink" title="Step 2. 检查数据结构"></a>Step 2. 检查数据结构</h3><p>课上先用了：</p>
+<ul>
+<li><code>df.info()</code></li>
+<li><code>df.describe()</code></li>
+</ul>
+<p>用途：</p>
+<ul>
+<li>看每列的数据类型</li>
+<li>看有没有缺失值</li>
+<li>看数值列范围是否异常</li>
+</ul>
+<p>注意到 <code>Salary</code> 一开始是字符串，所以先把逗号去掉，再转整数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].replace(<span class="hljs-string">&#x27;,&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, regex=<span class="hljs-literal">True</span>)<br>df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].astype(<span class="hljs-built_in">int</span>)<br></code></pre></td></tr></table></figure>
+
+<p>这一步说明：</p>
+<p>有些“看起来像数字”的列，实际读进来可能是 <code>object</code>，不能直接拿去建模。</p>
+<h3 id="Step-3-删除无关列"><a href="#Step-3-删除无关列" class="headerlink" title="Step 3. 删除无关列"></a>Step 3. 删除无关列</h3><p>课上删掉了这些列：</p>
+<ul>
+<li><code>Timestamp</code></li>
+<li><code>Job title context</code></li>
+<li><code>Salary context</code></li>
+<li><code>Other currency</code></li>
+</ul>
+<p>原因：</p>
+<ul>
+<li><code>Timestamp</code> 只是提交时间，对工资预测价值不大</li>
+<li><code>Job title context</code> &#x2F; <code>Salary context</code> 是自由文本，不好直接进基础模型</li>
+<li><code>Other currency</code> 缺失极高，而且几乎不用</li>
+</ul>
+<p>这一步对应的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df.drop([...], axis=<span class="hljs-number">1</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="Step-4-先统计缺失值，再决定怎么补"><a href="#Step-4-先统计缺失值，再决定怎么补" class="headerlink" title="Step 4. 先统计缺失值，再决定怎么补"></a>Step 4. 先统计缺失值，再决定怎么补</h3><p>课上的关键思想不是“统一 fillna”，而是先做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.isna().<span class="hljs-built_in">sum</span>()<br></code></pre></td></tr></table></figure>
+
+<p>然后按缺失比例分类处理。</p>
+<h4 id="4-1-缺失为-0-的列"><a href="#4-1-缺失为-0-的列" class="headerlink" title="4.1 缺失为 0% 的列"></a>4.1 缺失为 0% 的列</h4><p>比如：</p>
+<ul>
+<li><code>Age</code></li>
+<li><code>Salary</code></li>
+<li><code>Currency</code></li>
+<li><code>Country</code></li>
+<li><code>Overall years of experience</code></li>
+<li><code>Years of experience in current job</code></li>
+</ul>
+<p>这些列不用处理，保持原样。</p>
+<h4 id="4-2-少量缺失（"><a href="#4-2-少量缺失（" class="headerlink" title="4.2 少量缺失（&lt;1%）的类别列：用众数填补"></a>4.2 少量缺失（&lt;1%）的类别列：用众数填补</h4><p>课上对这些列用 <code>mode()</code>：</p>
+<ul>
+<li><code>Industry</code></li>
+<li><code>Job title</code></li>
+<li><code>City</code></li>
+<li><code>Education level</code></li>
+<li><code>Gender</code></li>
+<li><code>Race</code></li>
+</ul>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">fill_mode_cols = [<span class="hljs-string">&#x27;Industry&#x27;</span>, <span class="hljs-string">&#x27;Job title&#x27;</span>, <span class="hljs-string">&#x27;City&#x27;</span>, <span class="hljs-string">&#x27;Education level&#x27;</span>, <span class="hljs-string">&#x27;Gender&#x27;</span>, <span class="hljs-string">&#x27;Race&#x27;</span>]<br><br><span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> fill_mode_cols:<br>    df[col] = df[col].fillna(df[col].mode()[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+
+<p>为什么用众数：</p>
+<ul>
+<li>都是类别变量</li>
+<li>缺失比例很小</li>
+<li>没必要为了少量缺失把整行删掉</li>
+<li>众数通常最稳妥，也最不破坏分布</li>
+</ul>
+<h4 id="4-3-缺失较多时：数值列用中位数，类别列用-Unknown"><a href="#4-3-缺失较多时：数值列用中位数，类别列用-Unknown" class="headerlink" title="4.3 缺失较多时：数值列用中位数，类别列用 Unknown"></a>4.3 缺失较多时：数值列用中位数，类别列用 <code>Unknown</code></h4><p>课上给了两个典型例子：</p>
+<ul>
+<li><code>Compensation</code>：26.1% 缺失 -&gt; 用中位数</li>
+<li><code>State</code>：17.9% 缺失 -&gt; 用 <code>Unknown</code></li>
+</ul>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Compensation&#x27;</span>] = df[<span class="hljs-string">&#x27;Compensation&#x27;</span>].fillna(df[<span class="hljs-string">&#x27;Compensation&#x27;</span>].median())<br>df[<span class="hljs-string">&#x27;State&#x27;</span>] = df[<span class="hljs-string">&#x27;State&#x27;</span>].fillna(<span class="hljs-string">&#x27;Unknown&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>为什么这样做：</p>
+<ul>
+<li><code>Compensation</code> 是数值列，而且容易受极端值影响，所以用中位数比均值更稳</li>
+<li><code>State</code> 的缺失并不一定是错误，很多非美国受访者本来就没有州信息，所以不能硬填众数，单独设成 <code>Unknown</code> 更合理</li>
+</ul>
+<h3 id="Step-5-把区间型文本转成数值"><a href="#Step-5-把区间型文本转成数值" class="headerlink" title="Step 5. 把区间型文本转成数值"></a>Step 5. 把区间型文本转成数值</h3><h4 id="5-1-Age-列"><a href="#5-1-Age-列" class="headerlink" title="5.1 Age 列"></a>5.1 Age 列</h4><p><code>Age</code> 原本是这种形式：</p>
+<ul>
+<li><code>18-24</code></li>
+<li><code>25-34</code></li>
+<li><code>35-44</code></li>
+</ul>
+<p>课上的思想是：</p>
+<p>如果目标是建模，可以把年龄段转成中点值，例如：</p>
+<ul>
+<li><code>18-24</code> -&gt; <code>21</code></li>
+<li><code>25-34</code> -&gt; <code>29.5</code></li>
+<li><code>35-44</code> -&gt; <code>39.5</code></li>
+</ul>
+<p>这样做的好处：</p>
+<ul>
+<li>模型更容易学习年龄与工资的趋势关系</li>
+<li>可以做相关分析</li>
+<li>方便后续回归或树模型</li>
+</ul>
+<p>但老师也提醒：</p>
+<p>如果只是做描述分析，年龄段也可以先保留为类别。</p>
+<h4 id="5-2-工作经验列"><a href="#5-2-工作经验列" class="headerlink" title="5.2 工作经验列"></a>5.2 工作经验列</h4><p>两列经验数据也都是区间：</p>
+<ul>
+<li><code>Overall years of experience</code></li>
+<li><code>Years of experience in current job</code></li>
+</ul>
+<p>例如：</p>
+<ul>
+<li><code>1 year or less</code> -&gt; <code>0.5</code></li>
+<li><code>2 - 4 years</code> -&gt; <code>3</code></li>
+<li><code>5 - 7 years</code> -&gt; <code>6</code></li>
+<li><code>8 - 10 years</code> -&gt; <code>9</code></li>
+<li><code>11 - 20 years</code> -&gt; <code>15.5</code></li>
+</ul>
+<p>在 notebook 最后的建模部分，实际用了两个函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">convert_age_to_midpoint</span>(<span class="hljs-params">age_range</span>):<br>    ...<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">convert_experience_to_midpoint</span>(<span class="hljs-params">exp_range</span>):<br>    ...<br></code></pre></td></tr></table></figure>
+
+<p>然后：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Age&#x27;</span>] = df[<span class="hljs-string">&#x27;Age&#x27;</span>].apply(convert_age_to_midpoint)<br>df[<span class="hljs-string">&#x27;Overall years of experience&#x27;</span>] = df[<span class="hljs-string">&#x27;Overall years of experience&#x27;</span>].apply(convert_experience_to_midpoint)<br>df[<span class="hljs-string">&#x27;Years of experience in current job&#x27;</span>] = df[<span class="hljs-string">&#x27;Years of experience in current job&#x27;</span>].apply(convert_experience_to_midpoint)<br></code></pre></td></tr></table></figure>
+
+<p>这一块是考试和作业里很常见的思路：</p>
+<p>“把有顺序的类别区间，映射成有意义的数值”。</p>
+<h3 id="Step-6-处理不合理数值和异常值"><a href="#Step-6-处理不合理数值和异常值" class="headerlink" title="Step 6. 处理不合理数值和异常值"></a>Step 6. 处理不合理数值和异常值</h3><h4 id="6-1-负数处理"><a href="#6-1-负数处理" class="headerlink" title="6.1 负数处理"></a>6.1 负数处理</h4><p>工资和补偿不应该是负值，所以先检查：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[(df[<span class="hljs-string">&#x27;Salary&#x27;</span>] &lt; <span class="hljs-number">0</span>) | (df[<span class="hljs-string">&#x27;Compensation&#x27;</span>] &lt; <span class="hljs-number">0</span>)]<br></code></pre></td></tr></table></figure>
+
+<p>然后用 <code>clip(lower=0)</code> 把负值截断到 0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].clip(lower=<span class="hljs-number">0</span>)<br>df[<span class="hljs-string">&#x27;Compensation&#x27;</span>] = df[<span class="hljs-string">&#x27;Compensation&#x27;</span>].clip(lower=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-2-0-值处理"><a href="#6-2-0-值处理" class="headerlink" title="6.2 0 值处理"></a>6.2 0 值处理</h4><p>课上的判断非常重要：</p>
+<ul>
+<li><code>Salary = 0</code> 通常不合理 -&gt; 视为缺失更合适</li>
+<li><code>Compensation = 0</code> 是合理的 -&gt; 因为很多工作确实没有奖金&#x2F;加班费</li>
+</ul>
+<p>所以只处理工资列：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].replace(<span class="hljs-number">0</span>, np.nan)<br></code></pre></td></tr></table></figure>
+
+<h4 id="6-3-用-IQR-做异常值截尾"><a href="#6-3-用-IQR-做异常值截尾" class="headerlink" title="6.3 用 IQR 做异常值截尾"></a>6.3 用 IQR 做异常值截尾</h4><p>老师没有直接删掉极端高工资，而是选择 capping（截尾）。</p>
+<p>做法：</p>
+<ol>
+<li>计算第一四分位数 <code>Q1</code></li>
+<li>计算第三四分位数 <code>Q3</code></li>
+<li>计算 <code>IQR = Q3 - Q1</code></li>
+<li>上界设为 <code>Q3 + 1.5 * IQR</code></li>
+<li>超过上界的值替换成上界</li>
+</ol>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">Q1 = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].quantile(<span class="hljs-number">0.25</span>)<br>Q3 = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].quantile(<span class="hljs-number">0.75</span>)<br>IQR = Q3 - Q1<br>upper_limit = Q3 + <span class="hljs-number">1.5</span> * IQR<br><br>df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = np.where(df[<span class="hljs-string">&#x27;Salary&#x27;</span>] &gt; upper_limit, upper_limit, df[<span class="hljs-string">&#x27;Salary&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+<p><code>Compensation</code> 也是同样逻辑。</p>
+<p>为什么不用直接删：</p>
+<ul>
+<li>有些高薪是真实存在的</li>
+<li>直接删除会损失样本</li>
+<li>截尾能降低极端值对均值、图形和模型的影响</li>
+</ul>
+<h3 id="Step-7-统一货币"><a href="#Step-7-统一货币" class="headerlink" title="Step 7. 统一货币"></a>Step 7. 统一货币</h3><p>原始 <code>Currency</code> 有多种币种：</p>
+<ul>
+<li><code>USD</code></li>
+<li><code>EUR</code></li>
+<li><code>GBP</code></li>
+<li><code>CAD</code></li>
+<li><code>CHF</code></li>
+<li><code>ZAR</code></li>
+<li><code>SEK</code></li>
+<li><code>HKD</code></li>
+<li><code>JPY</code></li>
+<li><code>AUD/NZD</code></li>
+</ul>
+<p>课上先排除了 <code>Currency == &#39;Other&#39;</code> 的记录，因为无法稳定换算：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df[df[<span class="hljs-string">&#x27;Currency&#x27;</span>] != <span class="hljs-string">&#x27;Other&#x27;</span>].reset_index(drop=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>然后用汇率字典转换成美元：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary_USD&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>] * df[<span class="hljs-string">&#x27;Currency&#x27;</span>].<span class="hljs-built_in">map</span>(conversion_rates)<br>df[<span class="hljs-string">&#x27;Compensation_USD&#x27;</span>] = df[<span class="hljs-string">&#x27;Compensation&#x27;</span>] * df[<span class="hljs-string">&#x27;Currency&#x27;</span>].<span class="hljs-built_in">map</span>(conversion_rates)<br></code></pre></td></tr></table></figure>
+
+<p>最后删掉原始 <code>Currency</code> 列。</p>
+<p>这一步的意义：</p>
+<ul>
+<li>不同币种不能直接比较</li>
+<li>不统一单位，平均值、分布图和模型都会失真</li>
+</ul>
+<h3 id="Step-8-高基数类别的处理思路"><a href="#Step-8-高基数类别的处理思路" class="headerlink" title="Step 8. 高基数类别的处理思路"></a>Step 8. 高基数类别的处理思路</h3><p>课上虽然没有把代码写完，但给了方向。</p>
+<h4 id="Job-title-高基数问题"><a href="#Job-title-高基数问题" class="headerlink" title="Job title 高基数问题"></a>Job title 高基数问题</h4><p><code>Job title</code> 有 14000+ 个唯一值，不能直接简单 one-hot。</p>
+<p>老师建议的思路：</p>
+<ul>
+<li>全部转小写</li>
+<li>去标点</li>
+<li>提取 seniority 关键词，如 <code>senior</code>、<code>junior</code>、<code>lead</code></li>
+<li>提取大类角色，如 <code>data scientist</code>、<code>software engineer</code></li>
+</ul>
+<p>这属于“类别归一化”。</p>
+<h4 id="类别编码思路"><a href="#类别编码思路" class="headerlink" title="类别编码思路"></a>类别编码思路</h4><p>老师提到：</p>
+<ul>
+<li>小基数类别 -&gt; one-hot encoding</li>
+<li>大基数类别 -&gt; frequency encoding 或先做归类</li>
+</ul>
+<hr>
+<h2 id="四、EDA-和建模部分在讲什么"><a href="#四、EDA-和建模部分在讲什么" class="headerlink" title="四、EDA 和建模部分在讲什么"></a>四、EDA 和建模部分在讲什么</h2><h3 id="1-EDA"><a href="#1-EDA" class="headerlink" title="1. EDA"></a>1. EDA</h3><p>课上用了两个最基础的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.hist(figsize=(<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))<br></code></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<ul>
+<li>看数值列分布</li>
+<li>判断偏态、离群值、多峰情况</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">sns.pairplot(df)<br></code></pre></td></tr></table></figure>
+
+<p>作用：</p>
+<ul>
+<li>看数值变量两两关系</li>
+<li>初步观察相关性和线性趋势</li>
+</ul>
+<h3 id="2-建模"><a href="#2-建模" class="headerlink" title="2. 建模"></a>2. 建模</h3><p>最后用的是线性回归：</p>
+<ol>
+<li>先把 <code>Age</code> 和经验列转数值</li>
+<li><code>dropna()</code> 去掉剩余缺失</li>
+<li>设定特征 <code>X</code> 和目标 <code>y</code></li>
+<li>把类别变量做 <code>get_dummies()</code></li>
+<li>划分训练集&#x2F;测试集</li>
+<li>训练 <code>LinearRegression()</code></li>
+<li>用 <code>mean_squared_error</code> 评估</li>
+</ol>
+<p>对应代码骨架：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">X = df.drop([<span class="hljs-string">&#x27;Salary&#x27;</span>, <span class="hljs-string">&#x27;USERID&#x27;</span>], axis=<span class="hljs-number">1</span>)<br>y = df[<span class="hljs-string">&#x27;Salary&#x27;</span>]<br><br>categorical_cols = X.select_dtypes(include=<span class="hljs-string">&#x27;object&#x27;</span>).columns<br>X = pd.get_dummies(X, columns=categorical_cols, drop_first=<span class="hljs-literal">True</span>)<br><br>X_train, X_test, y_train, y_test = train_test_split(<br>    X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span><br>)<br><br>model = LinearRegression()<br>model.fit(X_train, y_train)<br>preds = model.predict(X_test)<br>mse = mean_squared_error(y_test, preds)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、这节课最该记住的几个原则"><a href="#五、这节课最该记住的几个原则" class="headerlink" title="五、这节课最该记住的几个原则"></a>五、这节课最该记住的几个原则</h2><h3 id="原则-1：先看缺失比例，再决定填补方法"><a href="#原则-1：先看缺失比例，再决定填补方法" class="headerlink" title="原则 1：先看缺失比例，再决定填补方法"></a>原则 1：先看缺失比例，再决定填补方法</h3><ul>
+<li>缺失很少 -&gt; 可以用众数&#x2F;中位数</li>
+<li>缺失很多 -&gt; 要考虑业务含义</li>
+<li>不是所有缺失都代表错误</li>
+</ul>
+<h3 id="原则-2：数值列和类别列要分开处理"><a href="#原则-2：数值列和类别列要分开处理" class="headerlink" title="原则 2：数值列和类别列要分开处理"></a>原则 2：数值列和类别列要分开处理</h3><ul>
+<li>数值列常用：中位数、均值、IQR</li>
+<li>类别列常用：众数、<code>Unknown</code>、编码</li>
+</ul>
+<h3 id="原则-3：区间文本如果有顺序，可以转中点"><a href="#原则-3：区间文本如果有顺序，可以转中点" class="headerlink" title="原则 3：区间文本如果有顺序，可以转中点"></a>原则 3：区间文本如果有顺序，可以转中点</h3><p>像年龄段、工作年限这种数据，转成数值后更适合回归模型。</p>
+<h3 id="原则-4：异常值不一定要删，很多时候可以截尾"><a href="#原则-4：异常值不一定要删，很多时候可以截尾" class="headerlink" title="原则 4：异常值不一定要删，很多时候可以截尾"></a>原则 4：异常值不一定要删，很多时候可以截尾</h3><p>IQR capping 是这节课的重要方法。</p>
+<h3 id="原则-5：统一单位再分析"><a href="#原则-5：统一单位再分析" class="headerlink" title="原则 5：统一单位再分析"></a>原则 5：统一单位再分析</h3><p>多币种工资必须先转成同一单位，否则比较没有意义。</p>
+<h3 id="原则-6：预处理目标要和任务一致"><a href="#原则-6：预处理目标要和任务一致" class="headerlink" title="原则 6：预处理目标要和任务一致"></a>原则 6：预处理目标要和任务一致</h3><p>如果目标是机器学习，就要优先考虑：</p>
+<ul>
+<li>能不能数值化</li>
+<li>能不能编码</li>
+<li>模型会不会受异常值影响</li>
+</ul>
+<p>如果目标只是做描述统计，保留原始类别有时更自然。</p>
+<hr>
+<h2 id="六、方法速查"><a href="#六、方法速查" class="headerlink" title="六、方法速查"></a>六、方法速查</h2><h3 id="1-读数据与初步查看"><a href="#1-读数据与初步查看" class="headerlink" title="1. 读数据与初步查看"></a>1. 读数据与初步查看</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>df = pd.read_csv(<span class="hljs-string">&#x27;xxx.csv&#x27;</span>)<br>df.head()<br>df.info()<br>df.describe()<br></code></pre></td></tr></table></figure>
+
+<p>用途：</p>
+<ul>
+<li><code>read_csv()</code>：读取 CSV</li>
+<li><code>head()</code>：看前几行</li>
+<li><code>info()</code>：看类型和缺失</li>
+<li><code>describe()</code>：看数值统计摘要</li>
+</ul>
+<h3 id="2-改列名"><a href="#2-改列名" class="headerlink" title="2. 改列名"></a>2. 改列名</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df.rename(columns=&#123;<br>    <span class="hljs-string">&#x27;old_name&#x27;</span>: <span class="hljs-string">&#x27;new_name&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-删列"><a href="#3-删列" class="headerlink" title="3. 删列"></a>3. 删列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df.drop([<span class="hljs-string">&#x27;col1&#x27;</span>, <span class="hljs-string">&#x27;col2&#x27;</span>], axis=<span class="hljs-number">1</span>, errors=<span class="hljs-string">&#x27;ignore&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>axis=1</code> 表示删列</li>
+<li><code>errors=&#39;ignore&#39;</code> 表示列不存在时不报错</li>
+</ul>
+<h3 id="4-查缺失值"><a href="#4-查缺失值" class="headerlink" title="4. 查缺失值"></a>4. 查缺失值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df.isna().<span class="hljs-built_in">sum</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-用众数填补类别缺失"><a href="#5-用众数填补类别缺失" class="headerlink" title="5. 用众数填补类别缺失"></a>5. 用众数填补类别缺失</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;col&#x27;</span>] = df[<span class="hljs-string">&#x27;col&#x27;</span>].fillna(df[<span class="hljs-string">&#x27;col&#x27;</span>].mode()[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
+
+<p>适合：</p>
+<ul>
+<li>类别型数据</li>
+<li>缺失比例很小</li>
+</ul>
+<h3 id="6-用中位数填补数值缺失"><a href="#6-用中位数填补数值缺失" class="headerlink" title="6. 用中位数填补数值缺失"></a>6. 用中位数填补数值缺失</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;col&#x27;</span>] = df[<span class="hljs-string">&#x27;col&#x27;</span>].fillna(df[<span class="hljs-string">&#x27;col&#x27;</span>].median())<br></code></pre></td></tr></table></figure>
+
+<p>适合：</p>
+<ul>
+<li>数值型数据</li>
+<li>有偏态或异常值时比均值更稳</li>
+</ul>
+<h3 id="7-把缺失当作新类别"><a href="#7-把缺失当作新类别" class="headerlink" title="7. 把缺失当作新类别"></a>7. 把缺失当作新类别</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;col&#x27;</span>] = df[<span class="hljs-string">&#x27;col&#x27;</span>].fillna(<span class="hljs-string">&#x27;Unknown&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>适合：</p>
+<ul>
+<li>类别列</li>
+<li>缺失本身有意义</li>
+</ul>
+<h3 id="8-字符串数字转整数"><a href="#8-字符串数字转整数" class="headerlink" title="8. 字符串数字转整数"></a>8. 字符串数字转整数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].replace(<span class="hljs-string">&#x27;,&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, regex=<span class="hljs-literal">True</span>)<br>df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].astype(<span class="hljs-built_in">int</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="9-截断负值"><a href="#9-截断负值" class="headerlink" title="9. 截断负值"></a>9. 截断负值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;col&#x27;</span>] = df[<span class="hljs-string">&#x27;col&#x27;</span>].clip(lower=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="10-替换指定值"><a href="#10-替换指定值" class="headerlink" title="10. 替换指定值"></a>10. 替换指定值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;Salary&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>].replace(<span class="hljs-number">0</span>, np.nan)<br></code></pre></td></tr></table></figure>
+
+<h3 id="11-用-IQR-处理异常值"><a href="#11-用-IQR-处理异常值" class="headerlink" title="11. 用 IQR 处理异常值"></a>11. 用 IQR 处理异常值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">Q1 = df[<span class="hljs-string">&#x27;col&#x27;</span>].quantile(<span class="hljs-number">0.25</span>)<br>Q3 = df[<span class="hljs-string">&#x27;col&#x27;</span>].quantile(<span class="hljs-number">0.75</span>)<br>IQR = Q3 - Q1<br>upper = Q3 + <span class="hljs-number">1.5</span> * IQR<br><br>df[<span class="hljs-string">&#x27;col&#x27;</span>] = np.where(df[<span class="hljs-string">&#x27;col&#x27;</span>] &gt; upper, upper, df[<span class="hljs-string">&#x27;col&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
+<h3 id="12-过滤某类数据"><a href="#12-过滤某类数据" class="headerlink" title="12. 过滤某类数据"></a>12. 过滤某类数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">df = df[df[<span class="hljs-string">&#x27;Currency&#x27;</span>] != <span class="hljs-string">&#x27;Other&#x27;</span>].reset_index(drop=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="13-用字典做映射转换"><a href="#13-用字典做映射转换" class="headerlink" title="13. 用字典做映射转换"></a>13. 用字典做映射转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">conversion_rates = &#123;<span class="hljs-string">&#x27;USD&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;EUR&#x27;</span>: <span class="hljs-number">1.07</span>&#125;<br>df[<span class="hljs-string">&#x27;Salary_USD&#x27;</span>] = df[<span class="hljs-string">&#x27;Salary&#x27;</span>] * df[<span class="hljs-string">&#x27;Currency&#x27;</span>].<span class="hljs-built_in">map</span>(conversion_rates)<br></code></pre></td></tr></table></figure>
+
+<h3 id="14-用-apply-做区间转中点"><a href="#14-用-apply-做区间转中点" class="headerlink" title="14. 用 apply() 做区间转中点"></a>14. 用 <code>apply()</code> 做区间转中点</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">convert_experience_to_midpoint</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">if</span> x == <span class="hljs-string">&#x27;2 - 4 years&#x27;</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">3</span><br>    <span class="hljs-keyword">return</span> x<br><br>df[<span class="hljs-string">&#x27;Experience&#x27;</span>] = df[<span class="hljs-string">&#x27;Experience&#x27;</span>].apply(convert_experience_to_midpoint)<br></code></pre></td></tr></table></figure>
+
+<h3 id="15-找类别列"><a href="#15-找类别列" class="headerlink" title="15. 找类别列"></a>15. 找类别列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">categorical_cols = X.select_dtypes(include=<span class="hljs-string">&#x27;object&#x27;</span>).columns<br></code></pre></td></tr></table></figure>
+
+<h3 id="16-One-hot-encoding"><a href="#16-One-hot-encoding" class="headerlink" title="16. One-hot encoding"></a>16. One-hot encoding</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">X = pd.get_dummies(X, columns=categorical_cols, drop_first=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>把类别变量拆成 0&#x2F;1 特征</li>
+<li><code>drop_first=True</code> 可以减少共线性</li>
+</ul>
+<h3 id="17-切分训练集和测试集"><a href="#17-切分训练集和测试集" class="headerlink" title="17. 切分训练集和测试集"></a>17. 切分训练集和测试集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.model_selection <span class="hljs-keyword">import</span> train_test_split<br><br>X_train, X_test, y_train, y_test = train_test_split(<br>    X, y, test_size=<span class="hljs-number">0.2</span>, random_state=<span class="hljs-number">42</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="18-训练线性回归"><a href="#18-训练线性回归" class="headerlink" title="18. 训练线性回归"></a>18. 训练线性回归</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.linear_model <span class="hljs-keyword">import</span> LinearRegression<br><br>model = LinearRegression()<br>model.fit(X_train, y_train)<br>preds = model.predict(X_test)<br></code></pre></td></tr></table></figure>
+
+<h3 id="19-计算均方误差"><a href="#19-计算均方误差" class="headerlink" title="19. 计算均方误差"></a>19. 计算均方误差</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> mean_squared_error<br><br>mse = mean_squared_error(y_test, preds)<br></code></pre></td></tr></table></figure>
+
+<h3 id="20-画直方图和变量关系图"><a href="#20-画直方图和变量关系图" class="headerlink" title="20. 画直方图和变量关系图"></a>20. 画直方图和变量关系图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> seaborn <span class="hljs-keyword">as</span> sns<br><br>df.hist(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))<br>plt.tight_layout()<br>plt.show()<br><br>sns.pairplot(df)<br>plt.show()<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="七、复习时可以直接背的答题模板"><a href="#七、复习时可以直接背的答题模板" class="headerlink" title="七、复习时可以直接背的答题模板"></a>七、复习时可以直接背的答题模板</h2><h3 id="如果题目问：如何处理缺失值？"><a href="#如果题目问：如何处理缺失值？" class="headerlink" title="如果题目问：如何处理缺失值？"></a>如果题目问：如何处理缺失值？</h3><p>可以这样答：</p>
+<p>先用 <code>df.isna().sum()</code> 检查每列缺失情况，再按数据类型和缺失比例处理。缺失很少的类别列可用众数填补，数值列通常用中位数填补；若某类别变量的缺失本身有业务含义，则可填成 <code>Unknown</code>，而不是直接用众数。</p>
+<h3 id="如果题目问：为什么用中位数而不是均值？"><a href="#如果题目问：为什么用中位数而不是均值？" class="headerlink" title="如果题目问：为什么用中位数而不是均值？"></a>如果题目问：为什么用中位数而不是均值？</h3><p>可以这样答：</p>
+<p>因为工资、奖金这类数据往往存在异常值，中位数比均值更不容易被极端值拉偏，因此填补缺失时更稳健。</p>
+<h3 id="如果题目问：为什么要把年龄段和工作年限转数值？"><a href="#如果题目问：为什么要把年龄段和工作年限转数值？" class="headerlink" title="如果题目问：为什么要把年龄段和工作年限转数值？"></a>如果题目问：为什么要把年龄段和工作年限转数值？</h3><p>可以这样答：</p>
+<p>因为线性回归等模型更适合处理数值特征。将区间类别映射为中点值后，模型更容易学习年龄或经验与工资之间的趋势关系。</p>
+<h3 id="如果题目问：为什么要统一币种？"><a href="#如果题目问：为什么要统一币种？" class="headerlink" title="如果题目问：为什么要统一币种？"></a>如果题目问：为什么要统一币种？</h3><p>可以这样答：</p>
+<p>因为不同货币单位下的工资数值不能直接比较。如果不先换算到统一单位，后续统计分析、可视化和建模结果都会失真。</p>
+<h3 id="如果题目问：为什么不用直接删除异常值？"><a href="#如果题目问：为什么不用直接删除异常值？" class="headerlink" title="如果题目问：为什么不用直接删除异常值？"></a>如果题目问：为什么不用直接删除异常值？</h3><p>可以这样答：</p>
+<p>因为部分高工资可能是真实样本，直接删除会损失数据。使用 IQR 截尾既能保留样本，又能减少极端值对统计结果和模型的干扰。</p>
+<hr>
+<h2 id="八、这份-notebook-里要特别注意的地方"><a href="#八、这份-notebook-里要特别注意的地方" class="headerlink" title="八、这份 notebook 里要特别注意的地方"></a>八、这份 notebook 里要特别注意的地方</h2><ol>
+<li><code>Age</code> 和经验列在预处理部分还是占位，真正的转换逻辑写在最后建模单元里。</li>
+<li><code>USERID</code> 在前面说明里说应删除，但最后建模前才在 <code>X = df.drop([&#39;Salary&#39;, &#39;USERID&#39;], axis=1)</code> 里排除。</li>
+<li><code>Job title</code> 高基数处理和类别编码只是讲思路，还没有完整实现。</li>
+<li>这份代码更像教学示范版，重点是理解流程，不是工业级最优清洗方案。</li>
+</ol>
+<hr>
+<h2 id="九、一句话收尾"><a href="#九、一句话收尾" class="headerlink" title="九、一句话收尾"></a>九、一句话收尾</h2><p>这节课最重要的不是记住每一行代码，而是记住这条逻辑链：</p>
+<p>先理解数据 -&gt; 再按列判断问题 -&gt; 选择合适的清洗方式 -&gt; 统一成可分析、可建模的格式 -&gt; 再做 EDA 和建模。</p>
 
                 
               </div>

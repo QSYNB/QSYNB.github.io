@@ -19,15 +19,15 @@
   <meta name="author" content="秦少言">
   <meta name="keywords" content="">
   
-    <meta name="description" content="123456def fake_bin(x):    # 一行搞定：遍历 x，如果是 &lt;5 就给 &#x27;0&#x27;，否则给 &#x27;1&#x27;    # .join() 把列表里的元素用 &#x27;&#x27; 连接起来    # 单引号或者双引号都可以    return &quot;&quot;.join([&quot;0&quot; if int(d) &lt; 5">
+    <meta name="description" content="fake_bin（join）12def fake_bin(x):    return &quot;&quot;.join([&quot;0&quot; if int(d) &lt; 5 else &quot;1&quot; for d in x])   fake_bin（translate）123def fake_bin(x):    table &#x3D; str.maketrans(&quot;01">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python">
 <meta property="og:url" content="https://qsynb.github.io/2026/02/24/python/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="123456def fake_bin(x):    # 一行搞定：遍历 x，如果是 &lt;5 就给 &#x27;0&#x27;，否则给 &#x27;1&#x27;    # .join() 把列表里的元素用 &#x27;&#x27; 连接起来    # 单引号或者双引号都可以    return &quot;&quot;.join([&quot;0&quot; if int(d) &lt; 5">
+<meta property="og:description" content="fake_bin（join）12def fake_bin(x):    return &quot;&quot;.join([&quot;0&quot; if int(d) &lt; 5 else &quot;1&quot; for d in x])   fake_bin（translate）123def fake_bin(x):    table &#x3D; str.maketrans(&quot;01">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-02-24T03:22:46.000Z">
-<meta property="article:modified_time" content="2026-04-08T12:49:38.520Z">
+<meta property="article:modified_time" content="2026-04-13T18:11:27.385Z">
 <meta property="article:author" content="秦少言">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          4.5k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          23 分钟
+          38 分钟
         
       </span>
     
@@ -275,28 +275,317 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-comment"># 一行搞定：遍历 x，如果是 &lt;5 就给 &#x27;0&#x27;，否则给 &#x27;1&#x27;</span><br>    <span class="hljs-comment"># .join() 把列表里的元素用 &#x27;&#x27; 连接起来</span><br>    <span class="hljs-comment"># 单引号或者双引号都可以</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(d) &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> x]) <br><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-comment"># 创建映射表：01234 变成 0，56789 变成 1</span><br>    table = <span class="hljs-built_in">str</span>.maketrans(<span class="hljs-string">&quot;0123456789&quot;</span>, <span class="hljs-string">&quot;0000011111&quot;</span>)<br>    <span class="hljs-comment"># .translate() 把 x 里的字符根据 table 映射表替换</span><br>    <span class="hljs-keyword">return</span> x.translate(table)<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_char</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-comment"># 从索引 1 开始，截取到倒数第 1 个之前</span><br>    <span class="hljs-keyword">return</span> s[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
-<p>关键知识点：split()<br>语法：string.split(separator)<br>例子：”10:5”.split(“:”) 结果是 [‘10’, ‘5’]。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">points</span>(<span class="hljs-params">games</span>):<br>    <span class="hljs-comment"># 逻辑：如果是赢(3分)，如果是平(1分)，否则0分</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] &gt; g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] == g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> games)<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_needle</span>(<span class="hljs-params">haystack</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;found the needle at position <span class="hljs-subst">&#123;haystack.index(<span class="hljs-string">&quot;needle&quot;</span>)&#125;</span>&#x27;</span><br>    <span class="hljs-comment"># .index() 查找子字符串第一次出现的索引</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">getCount</span>(<span class="hljs-params">inputStr</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> let <span class="hljs-keyword">in</span> inputStr <span class="hljs-keyword">if</span> let <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;aeiouAEIOU&quot;</span>)<br><span class="hljs-comment"># let in &quot;aeiouAEIOU&quot; 检查 let 是否在这个字符串里 </span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">4</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">all</span>(n <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;0123456789&quot;</span> <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> pin)<br>    <span class="hljs-comment"># all() 检查可迭代对象里的所有元素是否都为 True</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(pin) <span class="hljs-keyword">in</span> (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> pin.isdigit()<br>    <span class="hljs-comment"># pin.isdigit() 检查 pin 是否只包含数字字符</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_positives_sum_negatives</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">0</span>),<span class="hljs-built_in">sum</span>(x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &lt;<span class="hljs-number">0</span>)] <span class="hljs-keyword">if</span> arr <span class="hljs-keyword">else</span> []<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">filter_list</span>(<span class="hljs-params">l</span>):<br>    <span class="hljs-comment"># 翻译：如果 i 是 int 类型的一个实例</span><br>    <span class="hljs-keyword">return</span> [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(i, <span class="hljs-built_in">int</span>)]<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_by</span>(<span class="hljs-params">x, n</span>):<br>    <span class="hljs-comment"># 产生 1 到 n 的数字（注意 range 是左闭右开，所以要 n + 1）</span><br>    <span class="hljs-comment"># range(start, stop[, step])</span><br>    <span class="hljs-keyword">return</span> [i * x <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>)]<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_triangle</span>(<span class="hljs-params">a, b, c</span>):<br>    <span class="hljs-keyword">return</span> (a&lt;b+c) <span class="hljs-keyword">and</span> (b&lt;a+c) <span class="hljs-keyword">and</span> (c&lt;a+b)<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_jaden_case</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>.join(word.capitalize() <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> string.split())<br>    <span class="hljs-comment">### .join() 把列表里的元素用 &#x27;&#x27; 连接起来</span><br>    <span class="hljs-comment">### .split() 把字符串用 &#x27;&#x27; 分割成列表</span><br>    <span class="hljs-comment">### .capitalize() 把字符串的第一个字符变成大写</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_sheeps</span>(<span class="hljs-params">arrayOfSheeps</span>):<br>  <span class="hljs-keyword">return</span> arrayOfSheeps.count(<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">DNAtoRNA</span>(<span class="hljs-params">dna</span>):<br>    <span class="hljs-keyword">return</span> dna.replace(<span class="hljs-string">&#x27;T&#x27;</span>, <span class="hljs-string">&#x27;U&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dna_to_rna</span>(<span class="hljs-params">dna</span>):<br>    <span class="hljs-comment"># 注意：DNA 里的胸腺嘧啶是 T，RNA 里的尿嘧啶是大写的 U 喔！</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-string">&quot;U&quot;</span> <span class="hljs-keyword">if</span> i == <span class="hljs-string">&quot;T&quot;</span> <span class="hljs-keyword">else</span> i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> dna)<br><br>    <span class="hljs-comment">### 筛选逻辑（只要精华）：if 放在 for 后面。</span><br>    <span class="hljs-comment">### 二选一逻辑（这个变那个）：if-else 整个结构必须放在 for 的前面。</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">longest</span>(<span class="hljs-params">a1, a2</span>):<br>    <span class="hljs-comment"># your code</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(a1 + a2)))<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">min_max</span>(<span class="hljs-params">lst</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">min</span>(lst),<span class="hljs-built_in">max</span>(lst)]<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_next_square</span>(<span class="hljs-params">sq</span>):<br>    root = sq ** <span class="hljs-number">0.5</span> <span class="hljs-comment"># 计算平方根</span><br>    <span class="hljs-keyword">if</span> root.is_integer(): <span class="hljs-comment"># 如果平方根是整数</span><br>        <span class="hljs-keyword">return</span> (root + <span class="hljs-number">1</span>)**<span class="hljs-number">2</span><br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_alternating_case</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">return</span> string.swapcase()<br>    <span class="hljs-comment">### .swapcase() 把字符串里的大写字母变成小写字母，小写字母变成大写字母</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">stray</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(<span class="hljs-built_in">set</span>(arr), key=arr.count)<br>    <span class="hljs-comment">### .count() 统计元素在列表里的出现次数</span><br>    <span class="hljs-comment">### .set() 把列表里的重复元素去掉</span><br>    <span class="hljs-comment">### key=arr.count 按出现次数最少的元素排序</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-comment"># 先补一个下划线，防止末尾落单</span><br>    s += <span class="hljs-string">&quot;_&quot;</span><br>    <span class="hljs-comment"># 从 0 开始，每隔 2 个取一段，长度为 2</span><br>    <span class="hljs-comment"># range 里的 len(s)-1 是为了防止偶数长度时多出一个 &quot;__&quot;</span><br>    <span class="hljs-keyword">return</span> [s[i:i+<span class="hljs-number">2</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s)-<span class="hljs-number">1</span>, <span class="hljs-number">2</span>)]<br></code></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pig_it</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-comment"># 1. text.split()：拆成单词列表</span><br>    <span class="hljs-comment"># 2. x[1:] + x[0] + &#x27;ay&#x27;：切片组合（去掉首字母的后面部分 + 首字母 + ay）</span><br>    <span class="hljs-comment"># 3. if x.isalpha()：过滤器，确保只有字母才变，标点符号不动</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(x[<span class="hljs-number">1</span>:] + x[<span class="hljs-number">0</span>] + <span class="hljs-string">&#x27;ay&#x27;</span> <span class="hljs-keyword">if</span> x.isalpha() <span class="hljs-keyword">else</span> x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> text.split())<br></code></pre></td></tr></table></figure>
+                <p><a id="fake-bin-join"></a></p>
+<h4 id="fake-bin（join）"><a href="#fake-bin（join）" class="headerlink" title="fake_bin（join）"></a>fake_bin（join）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join([<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">int</span>(d) &lt; <span class="hljs-number">5</span> <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;1&quot;</span> <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> x])<br></code></pre></td></tr></table></figure>
+
+<p><a id="fake-bin-translate"></a></p>
+<h4 id="fake-bin（translate）"><a href="#fake-bin（translate）" class="headerlink" title="fake_bin（translate）"></a>fake_bin（translate）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fake_bin</span>(<span class="hljs-params">x</span>):<br>    table = <span class="hljs-built_in">str</span>.maketrans(<span class="hljs-string">&quot;0123456789&quot;</span>, <span class="hljs-string">&quot;0000011111&quot;</span>)<br>    <span class="hljs-keyword">return</span> x.translate(table)<br></code></pre></td></tr></table></figure>
+
+<p><a id="remove-char"></a></p>
+<h4 id="remove-char"><a href="#remove-char" class="headerlink" title="remove_char"></a>remove_char</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_char</span>(<span class="hljs-params">s</span>):<br>    <span class="hljs-keyword">return</span> s[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+
+<p>关键知识点：<code>split()</code></p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>string.split(separator)</code></td>
+<td>按分隔符拆分字符串</td>
+</tr>
+<tr>
+<td><code>&quot;10:5&quot;.split(&quot;:&quot;)</code></td>
+<td>结果是 <code>[&quot;10&quot;, &quot;5&quot;]</code></td>
+</tr>
+</tbody></table>
+<p><a id="points"></a></p>
+<h4 id="points"><a href="#points" class="headerlink" title="points"></a>points</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">points</span>(<span class="hljs-params">games</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">3</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] &gt; g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> g[<span class="hljs-number">0</span>] == g[<span class="hljs-number">2</span>] <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> games)<br></code></pre></td></tr></table></figure>
+
+<p><a id="find-needle"></a></p>
+<h4 id="find-needle"><a href="#find-needle" class="headerlink" title="find_needle"></a>find_needle</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_needle</span>(<span class="hljs-params">haystack</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;found the needle at position <span class="hljs-subst">&#123;haystack.index(<span class="hljs-string">&quot;needle&quot;</span>)&#125;</span>&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><a id="get-count"></a></p>
+<h4 id="getCount"><a href="#getCount" class="headerlink" title="getCount"></a>getCount</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">getCount</span>(<span class="hljs-params">inputStr</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> let <span class="hljs-keyword">in</span> inputStr <span class="hljs-keyword">if</span> let <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;aeiouAEIOU&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><a id="validate-pin"></a></p>
+<h4 id="validate-pin"><a href="#validate-pin" class="headerlink" title="validate_pin"></a>validate_pin</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">4</span> <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(pin) == <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">all</span>(n <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;0123456789&quot;</span> <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> pin)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">validate_pin</span>(<span class="hljs-params">pin</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">len</span>(pin) <span class="hljs-keyword">in</span> (<span class="hljs-number">4</span>, <span class="hljs-number">6</span>) <span class="hljs-keyword">and</span> pin.isdigit()<br></code></pre></td></tr></table></figure>
+
+<p><a id="count-positives-sum-negatives"></a></p>
+<h4 id="count-positives-sum-negatives"><a href="#count-positives-sum-negatives" class="headerlink" title="count_positives_sum_negatives"></a>count_positives_sum_negatives</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_positives_sum_negatives</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">sum</span>(<span class="hljs-number">1</span> <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &gt; <span class="hljs-number">0</span>), <span class="hljs-built_in">sum</span>(x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span>)] <span class="hljs-keyword">if</span> arr <span class="hljs-keyword">else</span> []<br></code></pre></td></tr></table></figure>
+
+<p><a id="filter-list"></a></p>
+<h4 id="filter-list"><a href="#filter-list" class="headerlink" title="filter_list"></a>filter_list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">filter_list</span>(<span class="hljs-params">l</span>):<br>    <span class="hljs-keyword">return</span> [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> l <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(i, <span class="hljs-built_in">int</span>)]<br></code></pre></td></tr></table></figure>
+
+<p><a id="count-by"></a></p>
+<h4 id="count-by"><a href="#count-by" class="headerlink" title="count_by"></a>count_by</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_by</span>(<span class="hljs-params">x, n</span>):<br>    <span class="hljs-keyword">return</span> [i * x <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>)]<br></code></pre></td></tr></table></figure>
+
+<p><a id="is-triangle"></a></p>
+<h4 id="is-triangle"><a href="#is-triangle" class="headerlink" title="is_triangle"></a>is_triangle</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_triangle</span>(<span class="hljs-params">a, b, c</span>):<br>    <span class="hljs-keyword">return</span> (a &lt; b + c) <span class="hljs-keyword">and</span> (b &lt; a + c) <span class="hljs-keyword">and</span> (c &lt; a + b)<br></code></pre></td></tr></table></figure>
+
+<p><a id="to-jaden-case"></a></p>
+<h4 id="to-jaden-case"><a href="#to-jaden-case" class="headerlink" title="to_jaden_case"></a>to_jaden_case</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_jaden_case</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(word.capitalize() <span class="hljs-keyword">for</span> word <span class="hljs-keyword">in</span> string.split())<br></code></pre></td></tr></table></figure>
+
+<p><a id="count-sheeps"></a></p>
+<h4 id="count-sheeps"><a href="#count-sheeps" class="headerlink" title="count_sheeps"></a>count_sheeps</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">count_sheeps</span>(<span class="hljs-params">arrayOfSheeps</span>):<br>    <span class="hljs-keyword">return</span> arrayOfSheeps.count(<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p><a id="dna-to-rna"></a></p>
+<h4 id="dna-to-rna"><a href="#dna-to-rna" class="headerlink" title="dna_to_rna"></a>dna_to_rna</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">DNAtoRNA</span>(<span class="hljs-params">dna</span>):<br>    <span class="hljs-keyword">return</span> dna.replace(<span class="hljs-string">&quot;T&quot;</span>, <span class="hljs-string">&quot;U&quot;</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dna_to_rna</span>(<span class="hljs-params">dna</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-string">&quot;U&quot;</span> <span class="hljs-keyword">if</span> i == <span class="hljs-string">&quot;T&quot;</span> <span class="hljs-keyword">else</span> i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> dna)<br></code></pre></td></tr></table></figure>
+
+<p><a id="longest"></a></p>
+<h4 id="longest"><a href="#longest" class="headerlink" title="longest"></a>longest</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">longest</span>(<span class="hljs-params">a1, a2</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(<span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(a1 + a2)))<br></code></pre></td></tr></table></figure>
+
+<p><a id="min-max"></a></p>
+<h4 id="min-max"><a href="#min-max" class="headerlink" title="min_max"></a>min_max</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">min_max</span>(<span class="hljs-params">lst</span>):<br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">min</span>(lst), <span class="hljs-built_in">max</span>(lst)]<br></code></pre></td></tr></table></figure>
+
+<p><a id="find-next-square"></a></p>
+<h4 id="find-next-square"><a href="#find-next-square" class="headerlink" title="find_next_square"></a>find_next_square</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">find_next_square</span>(<span class="hljs-params">sq</span>):<br>    root = sq ** <span class="hljs-number">0.5</span><br>    <span class="hljs-keyword">if</span> root.is_integer():<br>        <span class="hljs-keyword">return</span> (root + <span class="hljs-number">1</span>) ** <span class="hljs-number">2</span><br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><a id="to-alternating-case"></a></p>
+<h4 id="to-alternating-case"><a href="#to-alternating-case" class="headerlink" title="to_alternating_case"></a>to_alternating_case</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">to_alternating_case</span>(<span class="hljs-params">string</span>):<br>    <span class="hljs-keyword">return</span> string.swapcase()<br></code></pre></td></tr></table></figure>
+
+<p><a id="stray"></a></p>
+<h4 id="stray"><a href="#stray" class="headerlink" title="stray"></a>stray</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">stray</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(<span class="hljs-built_in">set</span>(arr), key=arr.count)<br></code></pre></td></tr></table></figure>
+
+<p><a id="solution"></a></p>
+<h4 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s</span>):<br>    s += <span class="hljs-string">&quot;_&quot;</span><br>    <span class="hljs-keyword">return</span> [s[i:i + <span class="hljs-number">2</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(s) - <span class="hljs-number">1</span>, <span class="hljs-number">2</span>)]<br></code></pre></td></tr></table></figure>
+
+<p><a id="pig-it"></a></p>
+<h4 id="pig-it"><a href="#pig-it" class="headerlink" title="pig_it"></a>pig_it</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pig_it</span>(<span class="hljs-params">text</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(x[<span class="hljs-number">1</span>:] + x[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot;ay&quot;</span> <span class="hljs-keyword">if</span> x.isalpha() <span class="hljs-keyword">else</span> x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> text.split())<br></code></pre></td></tr></table></figure>
+
+<p><a id="move-zeros"></a></p>
+<h4 id="move-zeros"><a href="#move-zeros" class="headerlink" title="move_zeros"></a>move_zeros</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">move_zeros</span>(<span class="hljs-params">arr</span>):<br>    <span class="hljs-comment"># isinstance(x, bool) 用来单独保留 True / False</span><br>    <span class="hljs-comment"># 因为 False == 0，所以不能只写 x != 0</span><br>    l = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arr <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(x, <span class="hljs-built_in">bool</span>) <span class="hljs-keyword">or</span> x != <span class="hljs-number">0</span>]<br>    <span class="hljs-comment"># [0] * n 表示生成 n 个 0，再拼接到末尾</span><br>    <span class="hljs-keyword">return</span> l + [<span class="hljs-number">0</span>] * (<span class="hljs-built_in">len</span>(arr) - <span class="hljs-built_in">len</span>(l))<br></code></pre></td></tr></table></figure>
+
+<p><a id="cakes"></a></p>
+<h4 id="cakes"><a href="#cakes" class="headerlink" title="cakes"></a>cakes</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">cakes</span>(<span class="hljs-params">recipe, available</span>):<br>    <span class="hljs-comment"># dict.get(key, 0): 取字典里 key 对应的值，如果没有这个 key，就返回 0</span><br>    <span class="hljs-comment"># recipe.items(): 同时遍历字典里的键和值</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(available.get(k, <span class="hljs-number">0</span>) // v <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> recipe.items())<br></code></pre></td></tr></table></figure>
+
+<p><a id="is-solved"></a></p>
+<h4 id="is-solved"><a href="#is-solved" class="headerlink" title="is_solved"></a>is_solved</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">is_solved</span>(<span class="hljs-params">board</span>):<br>    lines = []<br><br>    <span class="hljs-comment"># lines.extend(x) 会把 x 里的元素一个个加到列表末尾</span><br>    lines.extend(board)<br>    lines.extend([[board[<span class="hljs-number">0</span>][i], board[<span class="hljs-number">1</span>][i], board[<span class="hljs-number">2</span>][i]] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)])<br>    lines.append([board[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>], board[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>], board[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]])<br>    lines.append([board[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>], board[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>], board[<span class="hljs-number">2</span>][<span class="hljs-number">0</span>]])<br><br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines:<br>        <span class="hljs-keyword">if</span> line == [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> line == [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">2</span><br><br>    <span class="hljs-comment"># any(...) 里只要有一个是 True，结果就是 True</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">any</span>(<span class="hljs-number">0</span> <span class="hljs-keyword">in</span> row <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> board):<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="方法速查"><a href="#方法速查" class="headerlink" title="方法速查"></a>方法速查</h3><h4 id="字符串常用方法"><a href="#字符串常用方法" class="headerlink" title="字符串常用方法"></a>字符串常用方法</h4><table>
+<thead>
+<tr>
+<th>方法&#x2F;函数</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.split(sep=None)</code></td>
+<td>拆分字符串</td>
+<td><a href="#to-jaden-case"><code>string.split(separator)</code></a></td>
+</tr>
+<tr>
+<td><code>.join(iterable)</code></td>
+<td>把可迭代对象里的字符串拼接起来</td>
+<td><a href="#fake-bin-join"><code>&quot;&quot;.join([...])</code></a></td>
+</tr>
+<tr>
+<td><code>.translate(table)</code></td>
+<td>按映射表批量替换字符</td>
+<td><a href="#fake-bin-translate"><code>x.translate(table)</code></a></td>
+</tr>
+<tr>
+<td><code>str.maketrans(x, y)</code></td>
+<td>创建字符映射表</td>
+<td><a href="#fake-bin-translate"><code>str.maketrans(...)</code></a></td>
+</tr>
+<tr>
+<td><code>.replace(old, new)</code></td>
+<td>替换字符串中的内容</td>
+<td><a href="#dna-to-rna"><code>&quot;TATA&quot;.replace(&quot;T&quot;, &quot;U&quot;)</code></a></td>
+</tr>
+<tr>
+<td><code>.capitalize()</code></td>
+<td>首字母大写，其余小写</td>
+<td><a href="#to-jaden-case"><code>word.capitalize()</code></a></td>
+</tr>
+<tr>
+<td><code>.swapcase()</code></td>
+<td>大小写互换</td>
+<td><a href="#to-alternating-case"><code>string.swapcase()</code></a></td>
+</tr>
+<tr>
+<td><code>.isdigit()</code></td>
+<td>判断是否全是数字字符</td>
+<td><a href="#validate-pin"><code>pin.isdigit()</code></a></td>
+</tr>
+<tr>
+<td><code>.isalpha()</code></td>
+<td>判断是否全是字母字符</td>
+<td><a href="#pig-it"><code>x.isalpha()</code></a></td>
+</tr>
+<tr>
+<td><code>.index(x)</code></td>
+<td>返回第一次出现的位置</td>
+<td><a href="#find-needle"><code>haystack.index(&quot;needle&quot;)</code></a></td>
+</tr>
+</tbody></table>
+<h4 id="列表与序列"><a href="#列表与序列" class="headerlink" title="列表与序列"></a>列表与序列</h4><table>
+<thead>
+<tr>
+<th>方法&#x2F;写法</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.count(x)</code></td>
+<td>统计元素出现次数</td>
+<td><a href="#count-sheeps"><code>arrayOfSheeps.count(True)</code></a></td>
+</tr>
+<tr>
+<td><code>s[a:b:c]</code></td>
+<td>切片，截取序列的一部分</td>
+<td><a href="#remove-char"><code>s[1:-1]</code></a></td>
+</tr>
+<tr>
+<td><code>range(start, stop[, step])</code></td>
+<td>生成整数序列，左闭右开</td>
+<td><a href="#count-by"><code>range(1, n + 1)</code></a></td>
+</tr>
+<tr>
+<td><code>.extend(iterable)</code></td>
+<td>把 iterable 里的元素逐个加到列表末尾</td>
+<td><a href="#is-solved"><code>lines.extend(board)</code></a></td>
+</tr>
+<tr>
+<td><code>.append(x)</code></td>
+<td>在列表末尾添加一个元素</td>
+<td><a href="#is-solved"><code>lines.append([...])</code></a></td>
+</tr>
+<tr>
+<td><code>.get(key, default)</code></td>
+<td>安全取字典里的值，键不存在时返回默认值</td>
+<td><a href="#cakes"><code>available.get(k, 0)</code></a></td>
+</tr>
+<tr>
+<td><code>.items()</code></td>
+<td>同时遍历字典里的键和值</td>
+<td><a href="#cakes"><code>for k, v in recipe.items()</code></a></td>
+</tr>
+</tbody></table>
+<h4 id="常用内置函数"><a href="#常用内置函数" class="headerlink" title="常用内置函数"></a>常用内置函数</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sum(iterable)</code></td>
+<td>求和，也常配合生成式做计数</td>
+<td><a href="#count-positives-sum-negatives"><code>sum(1 for x in arr if x &gt; 0)</code></a></td>
+</tr>
+<tr>
+<td><code>any(iterable)</code></td>
+<td>只要有一个元素为真，就返回 True</td>
+<td><a href="#is-solved"><code>any(0 in row for row in board)</code></a></td>
+</tr>
+<tr>
+<td><code>all(iterable)</code></td>
+<td>所有元素都为真时返回 <code>True</code></td>
+<td><a href="#validate-pin"><code>all(n in &quot;0123456789&quot; for n in pin)</code></a></td>
+</tr>
+<tr>
+<td><code>len(x)</code></td>
+<td>返回长度</td>
+<td><a href="#validate-pin"><code>len(pin)</code></a></td>
+</tr>
+<tr>
+<td><code>min(x)</code></td>
+<td>取最小值</td>
+<td><a href="#cakes"><code>min(available.get(k, 0) // v for k, v in recipe.items())</code></a></td>
+</tr>
+<tr>
+<td><code>min(x)</code></td>
+<td>取最小值</td>
+<td><a href="#min-max"><code>min(lst)</code></a></td>
+</tr>
+<tr>
+<td><code>max(x)</code></td>
+<td>取最大值</td>
+<td><a href="#min-max"><code>max(lst)</code></a></td>
+</tr>
+<tr>
+<td><code>set(x)</code></td>
+<td>去重，得到集合</td>
+<td><a href="#longest"><code>set(a1 + a2)</code></a></td>
+</tr>
+<tr>
+<td><code>sorted(x)</code></td>
+<td>排序，返回新列表</td>
+<td><a href="#longest"><code>sorted(set(a1 + a2))</code></a></td>
+</tr>
+<tr>
+<td><code>int(x)</code></td>
+<td>转成整数</td>
+<td><a href="#fake-bin-join"><code>int(d)</code></a></td>
+</tr>
+<tr>
+<td><code>isinstance(obj, type)</code></td>
+<td>判断对象是否属于某个类型</td>
+<td><a href="#move-zeros"><code>isinstance(x, bool)</code></a></td>
+</tr>
+</tbody></table>
+<h4 id="刷题里常见写法"><a href="#刷题里常见写法" class="headerlink" title="刷题里常见写法"></a>刷题里常见写法</h4><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>列表推导式</td>
+<td>快速生成列表</td>
+<td><a href="#filter-list"><code>[i for i in l if isinstance(i, int)]</code></a></td>
+</tr>
+<tr>
+<td>条件表达式</td>
+<td>一行写简单分支</td>
+<td><a href="#fake-bin-join"><code>&quot;0&quot; if int(d) &lt; 5 else &quot;1&quot;</code></a></td>
+</tr>
+<tr>
+<td>生成式计数</td>
+<td>配合 <code>sum()</code> 统计数量</td>
+<td><a href="#get-count"><code>sum(1 for let in inputStr if let in &quot;aeiouAEIOU&quot;)</code></a></td>
+</tr>
+<tr>
+<td><code>key=...</code> 比较</td>
+<td>指定比较依据</td>
+<td><a href="#stray"><code>min(set(arr), key=arr.count)</code></a></td>
+</tr>
+<tr>
+<td>f-string</td>
+<td>格式化字符串</td>
+<td><a href="#find-needle"><code>f&quot;found the needle at position ...&quot;</code></a></td>
+</tr>
+<tr>
+<td>平方根判断</td>
+<td>判断是否为整数平方根</td>
+<td><a href="#find-next-square"><code>root = sq ** 0.5</code></a></td>
+</tr>
+<tr>
+<td>列表拼接</td>
+<td>把两个列表接在一起</td>
+<td><a href="#move-zeros"><code>l + [0] * n</code></a></td>
+</tr>
+<tr>
+<td>列表重复</td>
+<td>快速生成 n 个相同元素</td>
+<td><a href="#move-zeros"><code>[0] * n</code></a></td>
+</tr>
+<tr>
+<td>整除 <code>//</code></td>
+<td>做除法并向下取整</td>
+<td><a href="#cakes"><code>available.get(k, 0) // v</code></a></td>
+</tr>
+</tbody></table>
+
                 
               </div>
             

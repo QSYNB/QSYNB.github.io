@@ -27,7 +27,7 @@
 <meta property="og:description" content="把数组转换为 torch 张量torch.as_tensor()  求解线性方程组torch.linalg.solve()    功能：求解线性方程组 $Ax &#x3D; b$，其中 $A$ 是一个方阵，$x$ 和 $b$ 是向量或矩阵。 参数： A：系数矩阵，形状为 (n, n)。 b：右侧向量或矩阵，形状为 (n,) 或 (n, m)。   返回值： x：解向量或矩阵，形状与 b 相同。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-02-19T12:22:48.000Z">
-<meta property="article:modified_time" content="2026-04-08T13:13:14.161Z">
+<meta property="article:modified_time" content="2026-04-13T17:51:31.796Z">
 <meta property="article:author" content="秦少言">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          4.2k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          9 分钟
+          36 分钟
         
       </span>
     
@@ -339,6 +339,231 @@
 <li><code>min-max normalization</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">x_min = torch.<span class="hljs-built_in">min</span>(x, dim=<span class="hljs-number">0</span>).values<br>x_max = torch.<span class="hljs-built_in">max</span>(x, dim=<span class="hljs-number">0</span>).values<br>normalized = torch.<span class="hljs-built_in">round</span>((x - x_min) / (x_max - x_min), decimals=<span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="sigmoid计算"><a href="#sigmoid计算" class="headerlink" title="sigmoid计算"></a>sigmoid计算</h3><ol>
+<li>注意返回类型</li>
+</ol>
+<ul>
+<li><code>torch.sigmoid()</code> 的结果还是 <code>tensor</code>。</li>
+<li>如果题目要求返回 <code>Python float</code>，要把标量 tensor 转成普通浮点数。</li>
+<li>常用写法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">torch.sigmoid(z_t).item()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果还要保留 4 位小数，可以写：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">round</span>(torch.sigmoid(z_t).item(), <span class="hljs-number">4</span>)<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>sigmoid 的 input 一定要是 tensor</li>
+</ol>
+<ul>
+<li>在 PyTorch 里，<code>torch.sigmoid()</code> 最稳妥的输入是 <code>tensor</code>。</li>
+<li>如果输入只是普通数字，先转成 tensor 再算：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">z_t = torch.as_tensor(z)<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><code>as_tensor</code> 是否要带 <code>dtype</code></li>
+</ol>
+<ul>
+<li>简单结论：不是一定要写。</li>
+<li>如果是在做题或输入很简单，不写通常也可以。</li>
+<li>如果是在工程里，尤其是数据输入边界，最好写清楚 <code>dtype=torch.float32</code>，这样更稳。</li>
+</ul>
+<ol start="4">
+<li>扩展</li>
+</ol>
+<details>
+<summary>sigmoid 的数学公式和主要用途</summary>
+
+<ul>
+<li>数学公式：<br><code>sigmoid(z) = 1 / (1 + e^(-z))</code></li>
+<li>输出范围：<br><code>(0, 1)</code></li>
+<li>主要用途：<ul>
+<li>把任意实数压缩到 0 到 1 之间</li>
+<li>常用于二分类任务的输出层</li>
+<li>常用于把结果解释成概率</li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h3 id="torch方法速查"><a href="#torch方法速查" class="headerlink" title="torch方法速查"></a>torch方法速查</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>torch.as_tensor(x)</code></td>
+<td>把 Python 数值、list、NumPy array 等转成 tensor</td>
+</tr>
+<tr>
+<td><code>torch.sigmoid(x)</code></td>
+<td>计算 sigmoid 激活函数</td>
+</tr>
+<tr>
+<td><code>tensor.item()</code></td>
+<td>把单个标量 tensor 取成 Python 标量，比如 <code>float</code></td>
+</tr>
+<tr>
+<td><code>torch.round(x, decimals=4)</code></td>
+<td>对 tensor 做四舍五入，可以保留指定小数位</td>
+</tr>
+<tr>
+<td><code>torch.mean(x, dim=0)</code></td>
+<td>按指定维度求均值</td>
+</tr>
+<tr>
+<td><code>torch.std(x, dim=0, unbiased=False)</code></td>
+<td>按指定维度求标准差</td>
+</tr>
+<tr>
+<td><code>torch.min(x, dim=0).values</code></td>
+<td>按指定维度求最小值</td>
+</tr>
+<tr>
+<td><code>torch.max(x, dim=0).values</code></td>
+<td>按指定维度求最大值</td>
+</tr>
+<tr>
+<td><code>F.softmax(x, dim=0)</code></td>
+<td>计算 softmax，把一组分数转换成概率分布</td>
+</tr>
+<tr>
+<td><code>tensor.tolist()</code></td>
+<td>把 tensor 转成 Python 列表</td>
+</tr>
+<tr>
+<td><code>torch.matmul(x, y)</code></td>
+<td>做矩阵乘法或向量点积</td>
+</tr>
+<tr>
+<td><code>torch.linalg.solve(A, B)</code></td>
+<td>解线性方程 <code>A @ X = B</code></td>
+</tr>
+</tbody></table>
+<h3 id="基底变换矩阵"><a href="#基底变换矩阵" class="headerlink" title="基底变换矩阵"></a>基底变换矩阵</h3><ol>
+<li>一句话记忆</li>
+</ol>
+<ul>
+<li>从 <code>B</code> 到 <code>C</code> 的变换矩阵：<br><code>P = C^(-1) B</code></li>
+</ul>
+<ol start="2">
+<li>更稳的写法</li>
+</ol>
+<ul>
+<li><code>torch.linalg.solve(c_t, b_t)</code> 的作用是解线性方程：<br><code>c_t @ P = b_t</code></li>
+<li>解出来的 <code>P</code> 就等价于：<br><code>P = C^(-1) B</code></li>
+<li>这个写法通常比先求逆再相乘更稳。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">transform_basis</span>(<span class="hljs-params">B: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>]], C: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>]]</span>) -&gt; <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>]]:<br>    <span class="hljs-comment"># 把两个基底矩阵转成 tensor</span><br>    b_t = torch.as_tensor(B, dtype=torch.float32)<br>    c_t = torch.as_tensor(C, dtype=torch.float32)<br><br>    <span class="hljs-comment"># 解方程 c_t @ P = b_t</span><br>    <span class="hljs-comment"># 得到的 P 就是从 B 到 C 的变换矩阵</span><br>    <span class="hljs-comment"># 等价于 P = C^(-1) B</span><br>    P = torch.linalg.solve(c_t, b_t)<br><br>    <span class="hljs-comment"># 保留 4 位小数</span><br>    P = torch.<span class="hljs-built_in">round</span>(P, decimals=<span class="hljs-number">4</span>)<br><br>    <span class="hljs-comment"># tensor -&gt; Python nested list</span><br>    <span class="hljs-keyword">return</span> P.tolist()<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>这个变换矩阵会用在哪里</li>
+</ol>
+<ul>
+<li>把同一个向量从一个坐标系&#x2F;基底下的表示，转换到另一个基底下的表示</li>
+<li>线性代数里的换基问题</li>
+<li>3D 图形学和坐标系转换</li>
+<li>机器人、计算机视觉里的坐标变换</li>
+<li>机器学习里某些线性变换和表示变换问题</li>
+</ul>
+<h3 id="单神经元二分类模型"><a href="#单神经元二分类模型" class="headerlink" title="单神经元二分类模型"></a>单神经元二分类模型</h3><ol start="6">
+<li>tuple 说明</li>
+</ol>
+<ul>
+<li>这题返回值类型是：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-type">Tuple</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>], <span class="hljs-built_in">float</span>]<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>return probabilities, mse_value</code> 虽然没写括号，但返回的仍然是 <code>tuple</code>。</li>
+<li>下面两种写法等价：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">return</span> probabilities, mse_value<br><span class="hljs-keyword">return</span> (probabilities, mse_value)<br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>完整写法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>, <span class="hljs-type">Tuple</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">single_neuron_model</span>(<span class="hljs-params"></span><br><span class="hljs-params">    features: <span class="hljs-type">List</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>]],</span><br><span class="hljs-params">    labels: <span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>],</span><br><span class="hljs-params">    weights: <span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>],</span><br><span class="hljs-params">    bias: <span class="hljs-built_in">float</span></span><br><span class="hljs-params"></span>) -&gt; <span class="hljs-type">Tuple</span>[<span class="hljs-type">List</span>[<span class="hljs-built_in">float</span>], <span class="hljs-built_in">float</span>]:<br>    <span class="hljs-comment"># x: (样本数, 特征数)</span><br>    x = torch.as_tensor(features, dtype=torch.float32)<br>    <span class="hljs-comment"># y: (样本数,)</span><br>    y = torch.as_tensor(labels, dtype=torch.float32)<br>    <span class="hljs-comment"># w: (特征数,)</span><br>    w = torch.as_tensor(weights, dtype=torch.float32)<br>    <span class="hljs-comment"># b: 标量</span><br>    b = torch.as_tensor(bias, dtype=torch.float32)<br><br>    <span class="hljs-comment"># 矩阵乘法，得到每个样本的线性输出</span><br>    logits = torch.matmul(x, w) + b<br>    <span class="hljs-comment"># 经过 sigmoid 得到预测概率</span><br>    probs = torch.sigmoid(logits)<br>    <span class="hljs-comment"># 计算均方误差</span><br>    mse = torch.mean((probs - y) ** <span class="hljs-number">2</span>)<br><br>    <span class="hljs-comment"># tensor -&gt; Python list</span><br>    probabilities = [<span class="hljs-built_in">round</span>(p, <span class="hljs-number">4</span>) <span class="hljs-keyword">for</span> p <span class="hljs-keyword">in</span> probs.tolist()]<br>    <span class="hljs-comment"># tensor -&gt; Python float</span><br>    mse_value = <span class="hljs-built_in">round</span>(mse.item(), <span class="hljs-number">4</span>)<br><br>    <span class="hljs-keyword">return</span> probabilities, mse_value<br></code></pre></td></tr></table></figure>
+
+<details>
+<summary>扩展：这题里各变量的形状</summary>
+
+<ul>
+<li><code>x</code> 的形状：<code>(样本数, 特征数)</code></li>
+<li><code>w</code> 的形状：<code>(特征数,)</code></li>
+<li><code>b</code> 的形状：标量</li>
+<li><code>x @ w</code> 的结果形状：<code>(样本数,)</code></li>
+<li><code>probs</code> 的形状：<code>(样本数,)</code></li>
+</ul>
+</details>
+
+<h3 id="softmax计算"><a href="#softmax计算" class="headerlink" title="softmax计算"></a>softmax计算</h3><ol>
+<li>softmax 的作用</li>
+</ol>
+<ul>
+<li><code>softmax</code> 用来把一组原始分数（logits）转换成概率分布。</li>
+<li>转换后每个值都在 <code>(0, 1)</code> 之间，并且所有值加起来等于 <code>1</code>。</li>
+<li>常用于多分类任务的输出层。</li>
+</ul>
+<ol start="2">
+<li>softmax 的输入</li>
+</ol>
+<ul>
+<li><code>softmax</code> 的输入通常是一组分数，所以在 PyTorch 里一般先把 <code>list</code> 或其他数据转成 <code>tensor</code>。</li>
+<li>常用写法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">scores_t = torch.as_tensor(scores, dtype=torch.float32)<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>softmax 的写法</li>
+</ol>
+<ul>
+<li>PyTorch 内置写法：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">probs = F.softmax(scores_t, dim=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果输入是一维向量，<code>dim=0</code> 表示沿着这一维做 softmax。</li>
+<li>最后如果题目要求返回 Python 的 <code>list</code>，要写：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">probs.tolist()<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>返回类型</li>
+</ol>
+<ul>
+<li><code>F.softmax()</code> 返回的是 <code>tensor</code>。</li>
+<li>如果题目要求返回 <code>list[float]</code>，需要用 <code>.tolist()</code> 转成 Python 列表。</li>
+</ul>
+<ol start="5">
+<li>这题的完整写法</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">softmax</span>(<span class="hljs-params">scores: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">float</span>]</span>) -&gt; <span class="hljs-built_in">list</span>[<span class="hljs-built_in">float</span>]:<br>    scores_t = torch.as_tensor(scores, dtype=torch.float32)<br>    probs = F.softmax(scores_t, dim=<span class="hljs-number">0</span>)<br>    <span class="hljs-keyword">return</span> probs.tolist()<br></code></pre></td></tr></table></figure>
+
+<details>
+<summary>softmax 的数学公式和主要用途</summary>
+
+<ul>
+<li>数学公式：<br><code>softmax(x_i) = e^(x_i) / Σ e^(x_j)</code></li>
+<li>输出特点：<ul>
+<li>每个值都在 <code>(0, 1)</code> 之间</li>
+<li>所有输出之和等于 <code>1</code></li>
+</ul>
+</li>
+<li>主要用途：<ul>
+<li>多分类任务的输出层</li>
+<li>把一组分数转换成概率分布</li>
+<li>常用于分类模型最后一层</li>
+</ul>
+</li>
+</ul>
+</details>
 
                 
               </div>
